@@ -5,6 +5,8 @@
 //  Created by SXJY on 2021/6/28.
 //
 
+#import <UIKit/UIKit.h>
+
 #ifndef KBMacroDefinition_h
 #define KBMacroDefinition_h
 

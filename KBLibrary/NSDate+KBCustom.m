@@ -38,9 +38,9 @@
         if (seconds<60) {
             return @"刚刚";
         }else if (seconds<60*60) {
-            return [NSString stringWithFormat:@"%ld分钟前",(NSInteger)(seconds/60)];
+            return [NSString stringWithFormat:@"%ld分钟前",(long)(seconds/60)];
         }else if (seconds<60*60*24) {
-            return [NSString stringWithFormat:@"%ld小时前",(NSInteger)(seconds/(60*60))];
+            return [NSString stringWithFormat:@"%ld小时前",(long)(seconds/(60*60))];
         }else {
             return dateStr;
         }
@@ -48,11 +48,11 @@
         if (seconds<60) {
             return [NSString stringWithFormat:@"%ld秒钟后",seconds];
         }else if (seconds<60*60) {
-            return [NSString stringWithFormat:@"%ld分钟后",(NSInteger)(seconds/60)];
+            return [NSString stringWithFormat:@"%ld分钟后",(long)(seconds/60)];
         }else if (seconds<60*60*24) {
-            return [NSString stringWithFormat:@"%ld小时后",(NSInteger)(seconds/(60*60))];
+            return [NSString stringWithFormat:@"%ld小时后",(long)(seconds/(60*60))];
         }else if (seconds<60*60*24*60) {
-            return [NSString stringWithFormat:@"%ld天后",(NSInteger)(seconds/(60*60*24))];
+            return [NSString stringWithFormat:@"%ld天后",(long)(seconds/(60*60*24))];
         }else{
             return @"60天后";
         }

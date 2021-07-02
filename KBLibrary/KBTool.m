@@ -211,9 +211,9 @@
     }
     
     //format of minute
-    NSString *str_minute = [NSString stringWithFormat:@"%ld′",(NSInteger)(seconds/60)];
+    NSString *str_minute = [NSString stringWithFormat:@"%ld′",(long)(seconds/60)];
     //format of second
-    NSString *str_second = [NSString stringWithFormat:@"%ld″",(NSInteger)(seconds%60)];
+    NSString *str_second = [NSString stringWithFormat:@"%ld″",(long)(seconds%60)];
     //format of time
     NSString *format_time = nil;
     

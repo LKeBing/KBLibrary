@@ -12,7 +12,7 @@ s.ios.frameworks = 'Foundation', 'UIKit','AVFoundation'
 
 s.source_files = 'KBLibrary'
 
-s.dependency 'AFNetworking' , '~> 3.2.1'
+#s.dependency 'AFNetworking' , '~> 3.2.1'
 s.dependency 'MJRefresh'
 s.dependency 'SVProgressHUD'
 s.dependency 'SDWebImage'

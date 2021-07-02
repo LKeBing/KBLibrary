@@ -46,7 +46,7 @@
         }
     }else{
         if (seconds<60) {
-            return [NSString stringWithFormat:@"%ld秒钟后",seconds];
+            return [NSString stringWithFormat:@"%ld秒钟后",(long)seconds];
         }else if (seconds<60*60) {
             return [NSString stringWithFormat:@"%ld分钟后",(long)(seconds/60)];
         }else if (seconds<60*60*24) {

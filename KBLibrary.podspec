@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name         = "KBLibrary"
-s.version      = "1.0.6"
+s.version      = "1.0.7"
 s.ios.deployment_target = '9.0'
 s.summary      = "iOS develop tools"
 s.homepage     = "https://github.com/LKeBing/KBLibrary"

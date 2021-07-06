@@ -1,0 +1,42 @@
+PODS:
+  - AvoidCrash (2.5.2)
+  - IQKeyboardManager (6.5.6)
+  - Masonry (1.1.0)
+  - MJExtension (3.3.0)
+  - MJRefresh (3.6.1)
+  - SDWebImage (5.11.1):
+    - SDWebImage/Core (= 5.11.1)
+  - SDWebImage/Core (5.11.1)
+  - SVProgressHUD (2.2.5)
+
+DEPENDENCIES:
+  - AvoidCrash
+  - IQKeyboardManager
+  - Masonry
+  - MJExtension
+  - MJRefresh
+  - SDWebImage
+  - SVProgressHUD
+
+SPEC REPOS:
+  trunk:
+    - AvoidCrash
+    - IQKeyboardManager
+    - Masonry
+    - MJExtension
+    - MJRefresh
+    - SDWebImage
+    - SVProgressHUD
+
+SPEC CHECKSUMS:
+  AvoidCrash: 28c6916fe19bd2b84126b8dec7cbe61c9a12741d
+  IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  MJExtension: 01704cca2b60a214c10761b6491eab74069d68a9
+  MJRefresh: d2c1970d1cf6e77fcfcdfe76c943dfab8dbfa5c1
+  SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+
+PODFILE CHECKSUM: 43767bd70854a1b9affda5ef87fcce016d3d6447
+
+COCOAPODS: 1.10.1

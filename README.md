@@ -1,4 +1,29 @@
 # KBLibrary
 
-注意事项：
-1.iOS采用cocoapods管理该库后Xcode编译可能会报错：'sharedApplication' is unavailable: not available on iOS (App Extension) - Use view controller based solutions where appropriate instead。请找到Pods->KBLibrary->Build Settings->Require Only App-Extension-Safe API，将该bool值改为No，再次编译即可。
+[![CI Status](https://img.shields.io/travis/LKeBing/KBLibrary.svg?style=flat)](https://travis-ci.org/LKeBing/KBLibrary)
+[![Version](https://img.shields.io/cocoapods/v/KBLibrary.svg?style=flat)](https://cocoapods.org/pods/KBLibrary)
+[![License](https://img.shields.io/cocoapods/l/KBLibrary.svg?style=flat)](https://cocoapods.org/pods/KBLibrary)
+[![Platform](https://img.shields.io/cocoapods/p/KBLibrary.svg?style=flat)](https://cocoapods.org/pods/KBLibrary)
+
+## Example
+
+To run the example project, clone the repo, and run `pod install` from the Example directory first.
+
+## Requirements
+
+## Installation
+
+KBLibrary is available through [CocoaPods](https://cocoapods.org). To install
+it, simply add the following line to your Podfile:
+
+```ruby
+pod 'KBLibrary'
+```
+
+## Author
+
+LKeBing, lkb@sxw.cn
+
+## License
+
+KBLibrary is available under the MIT license. See the LICENSE file for more info.

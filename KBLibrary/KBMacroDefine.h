@@ -28,7 +28,7 @@
 #define kbSandboxPath           NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,  NSUserDomainMask, YES).lastObject
 
 #define kbUserDefaults          [NSUserDefaults standardUserDefaults]
-
+#define kbNotificationCenter    [NSNotificationCenter defaultCenter]
 //是否是横屏
 #define kbScreenIsLandscape     kbSharedApplication.statusBarOrientation >= 3
 

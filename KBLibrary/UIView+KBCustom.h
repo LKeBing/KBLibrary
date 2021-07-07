@@ -6,12 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "KBProperty.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIView (KBExtension)
-- (UIViewController *)containerViewController;
-@property CGFloat cornerRadius;
+KBStrongPropertyWithClass(UIWindow) kbKeyWindow;
+KBStrongPropertyWithClass(UIViewController) kbContainerViewController;
+KBFloatProperty kbCornerRadius;
 @end
 
 NS_ASSUME_NONNULL_END

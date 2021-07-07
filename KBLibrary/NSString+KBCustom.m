@@ -9,20 +9,24 @@
 
 @implementation NSString (KBCustom)
 
-- (NSString *)stringWithoutWhitespaceAndNewline  {
+- (NSString *)kb_withoutWhitespaceAndNewline  {
     return [self stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
-- (NSString *)decimalDigitCharacters {
+- (NSString *)kb_decimalDigitCharacters {
     NSCharacterSet *nonDigitCharacterSet = [[NSCharacterSet decimalDigitCharacterSet] invertedSet];
     return[[self componentsSeparatedByCharactersInSet:nonDigitCharacterSet] componentsJoinedByString:@""];
 }
 
+@end
+
+@implementation NSString (KBUrl)
+
 // urlencode
-- (NSString *)urlEncodeString {
-    return [self stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet characterSetWithCharactersInString:@"!$&'()*+,-./:;=?@_~%#[]"]];
+- (NSString *)kb_encodeUrl {
+    return [self stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 }
 // urldecode
-- (NSString *)urlDecodeString {
+- (NSString *)kb_decodeUrl {
     return [self stringByRemovingPercentEncoding];
 }
 

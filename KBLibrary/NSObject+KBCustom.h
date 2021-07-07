@@ -15,12 +15,17 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign, readonly) BOOL isValidate;
 
+/// 类名
 @property (class, nonatomic, copy, readonly) NSString *className;
 
 + (BOOL)kb_swizzleMethod:(SEL)systemSEL withMethod:(SEL)customSEL;
 + (BOOL)kb_swizzleClassMethod:(SEL)systemSEL withMethod:(SEL)customSEL;
 
-- (BOOL)isMethodOverride:(Class)cls selector:(SEL)sel;
+
+/// 判断某个类是否重写了某个方法
+/// @param cls 要判断的类
+/// @param sel 要判断的方法
+- (BOOL)kb_isMethodOverride:(Class)cls selector:(SEL)sel;
 
 @end
 

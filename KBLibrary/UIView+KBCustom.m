@@ -21,8 +21,9 @@
         return [KBTool keyWindow];
     }
 }
+- (void)setKbKeyWindow:(UIWindow *)kbKeyWindow {}
 
-- (UIViewController *)containerViewController {
+- (UIViewController *)kbContainerViewController {
     for (UIView* next = [self superview]; next; next = next.superview) {
         UIResponder* nextResponder = [next nextResponder];
         if ([nextResponder isKindOfClass:[UIViewController class]]) {
@@ -31,12 +32,13 @@
     }
     return nil;
 }
+- (void)setKbContainerViewController:(UIViewController *)kbContainerViewController {}
 
-- (void)setCornerRadius:(CGFloat)cornerRadius {
+- (void)setKbCornerRadius:(CGFloat)kbCornerRadius {
     [self.layer setMasksToBounds:YES];
-    [self.layer setCornerRadius:cornerRadius];
+    [self.layer setCornerRadius:kbCornerRadius];
 }
-- (CGFloat)cornerRadius {
+- (CGFloat)kbCornerRadius {
     return self.layer.cornerRadius;;
 }
 

@@ -89,7 +89,7 @@
 + (BOOL)kb_swizzleClassMethod:(SEL)systemSEL withMethod:(SEL)customSEL {
     return [object_getClass((id)self) kb_swizzleMethod:systemSEL withMethod:customSEL];
 }
-- (BOOL)isMethodOverride:(Class)cls selector:(SEL)sel {
+- (BOOL)kb_isMethodOverride:(Class)cls selector:(SEL)sel {
     IMP clsIMP = class_getMethodImplementation(cls, sel);
     IMP superClsIMP = class_getMethodImplementation([cls superclass], sel);
     

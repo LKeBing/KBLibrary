@@ -9,6 +9,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#define kbMinuteTimeInterval    60 //1分钟间隔秒数
+#define kbHourTimeInterval      (kbMinuteTimeInterval * 60) //1小时间隔秒数
+#define kbDayTimeInterval       (kbHourTimeInterval *24) //1天间隔秒数
+#define kbWeekTimeInterval      (kbDayTimeInterval * 7) //1星期间隔秒数
+
 @interface NSDate (KBCustom)
 
 /// 明天

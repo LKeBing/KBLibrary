@@ -8,16 +8,16 @@
 #import "UITableView+KBCustom.h"
 
 @implementation UITableView (KBCustom)
-- (void)registerCellWithNibName:(NSString *)nibName {
+- (void)kb_registerCellWithNibName:(NSString *)nibName {
     [self registerNib:[UINib nibWithNibName:nibName bundle:nil] forCellReuseIdentifier:nibName];
 }
-- (void)registerCellWithClass:(Class)cla {
+- (void)kb_registerCellWithClass:(Class)cla {
     [self registerClass:cla forCellReuseIdentifier:NSStringFromClass(cla)];
 }
-- (void)registerHeaderFooterWithClass:(Class)cla {
+- (void)kb_registerHeaderFooterWithClass:(Class)cla {
     [self registerClass:cla forHeaderFooterViewReuseIdentifier:NSStringFromClass(cla)];
 }
-- (void)registerHeaderFooterWithNibName:(NSString *)nibName {
+- (void)kb_registerHeaderFooterWithNibName:(NSString *)nibName {
     [self registerNib:[UINib nibWithNibName:nibName bundle:nil] forHeaderFooterViewReuseIdentifier:nibName];
 }
 @end

@@ -10,10 +10,10 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UITableView (KBCustom)
-- (void)registerCellWithNibName:(NSString *)nibName;
-- (void)registerCellWithClass:(Class)cla;
-- (void)registerHeaderFooterWithNibName:(NSString *)nibName;
-- (void)registerHeaderFooterWithClass:(Class)cla;
+- (void)kb_registerCellWithNibName:(NSString *)nibName;
+- (void)kb_registerCellWithClass:(Class)cla;
+- (void)kb_registerHeaderFooterWithNibName:(NSString *)nibName;
+- (void)kb_registerHeaderFooterWithClass:(Class)cla;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -6,12 +6,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "KBProperty.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSData (KBCustom)
 //字节大小
-- (NSString *)bytesSizeStr;
+KBStringProperty kbBytesSizeText
 @end
 
 NS_ASSUME_NONNULL_END

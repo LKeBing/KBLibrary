@@ -29,6 +29,9 @@
 		D82F5C9026942B3B0048C6F4 /* UITableView+KBCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F5C7E26942B3A0048C6F4 /* UITableView+KBCustom.m */; };
 		D82F5C9126942B3B0048C6F4 /* KBTranslucentAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F5C8026942B3A0048C6F4 /* KBTranslucentAlertViewController.m */; };
 		D82F5C9226942B3B0048C6F4 /* UIView+KBCustom.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F5C8526942B3A0048C6F4 /* UIView+KBCustom.m */; };
+		D8A8EE9A26957D7D007614CF /* NSMutableArray+KB.m in Sources */ = {isa = PBXBuildFile; fileRef = D8A8EE9926957D7D007614CF /* NSMutableArray+KB.m */; };
+		D8A8EEA926957FF3007614CF /* UIImage+KB.m in Sources */ = {isa = PBXBuildFile; fileRef = D8A8EEA826957FF3007614CF /* UIImage+KB.m */; };
+		D8A8EEAC26958037007614CF /* UIImageView+KB.m in Sources */ = {isa = PBXBuildFile; fileRef = D8A8EEAB26958037007614CF /* UIImageView+KB.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +83,12 @@
 		D82F5C8526942B3A0048C6F4 /* UIView+KBCustom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+KBCustom.m"; sourceTree = "<group>"; };
 		D82F5C8626942B3A0048C6F4 /* UIColor+KBCustom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+KBCustom.h"; sourceTree = "<group>"; };
 		D82F5C8726942B3A0048C6F4 /* KBProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KBProperty.h; sourceTree = "<group>"; };
+		D8A8EE9826957D7D007614CF /* NSMutableArray+KB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+KB.h"; sourceTree = "<group>"; };
+		D8A8EE9926957D7D007614CF /* NSMutableArray+KB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+KB.m"; sourceTree = "<group>"; };
+		D8A8EEA726957FF3007614CF /* UIImage+KB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+KB.h"; sourceTree = "<group>"; };
+		D8A8EEA826957FF3007614CF /* UIImage+KB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+KB.m"; sourceTree = "<group>"; };
+		D8A8EEAA26958037007614CF /* UIImageView+KB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+KB.h"; sourceTree = "<group>"; };
+		D8A8EEAB26958037007614CF /* UIImageView+KB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+KB.m"; sourceTree = "<group>"; };
 		F7CB2152FBBE583E2A8ABE49 /* Pods-KBLibrary_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KBLibrary_Example.release.xcconfig"; path = "Target Support Files/Pods-KBLibrary_Example/Pods-KBLibrary_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -206,6 +215,12 @@
 				D82F5C8526942B3A0048C6F4 /* UIView+KBCustom.m */,
 				D82F5C8126942B3A0048C6F4 /* UIViewController+KBCustom.h */,
 				D82F5C7026942B3A0048C6F4 /* UIViewController+KBCustom.m */,
+				D8A8EE9826957D7D007614CF /* NSMutableArray+KB.h */,
+				D8A8EE9926957D7D007614CF /* NSMutableArray+KB.m */,
+				D8A8EEA726957FF3007614CF /* UIImage+KB.h */,
+				D8A8EEA826957FF3007614CF /* UIImage+KB.m */,
+				D8A8EEAA26958037007614CF /* UIImageView+KB.h */,
+				D8A8EEAB26958037007614CF /* UIImageView+KB.m */,
 			);
 			name = KBLibrary;
 			path = ../../KBLibrary;
@@ -325,15 +340,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8A8EEA926957FF3007614CF /* UIImage+KB.m in Sources */,
 				6003F59E195388D20070C39A /* KBAppDelegate.m in Sources */,
 				D82F5C9126942B3B0048C6F4 /* KBTranslucentAlertViewController.m in Sources */,
 				D82F5C9226942B3B0048C6F4 /* UIView+KBCustom.m in Sources */,
 				D82F5C9026942B3B0048C6F4 /* UITableView+KBCustom.m in Sources */,
 				D82F5C8826942B3A0048C6F4 /* NSString+KBCustom.m in Sources */,
+				D8A8EEAC26958037007614CF /* UIImageView+KB.m in Sources */,
 				D82F5C8F26942B3B0048C6F4 /* NSDate+KBCustom.m in Sources */,
 				D82F5C8A26942B3B0048C6F4 /* UIViewController+KBCustom.m in Sources */,
 				6003F5A7195388D20070C39A /* KBViewController.m in Sources */,
 				D82F5C8B26942B3B0048C6F4 /* KBTreeModel.m in Sources */,
+				D8A8EE9A26957D7D007614CF /* NSMutableArray+KB.m in Sources */,
 				D82F5C8E26942B3B0048C6F4 /* NSObject+KBCustom.m in Sources */,
 				D82F5C8C26942B3B0048C6F4 /* UIColor+KBCustom.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,

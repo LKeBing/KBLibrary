@@ -8,7 +8,7 @@
 #import "UIViewController+KBCustom.h"
 
 @implementation UIViewController (KBCustom)
-- (void)back {
+- (void)kb_back {
     if (self.navigationController.viewControllers.count == 1) {
         if (self.navigationController.parentViewController) {
             
@@ -19,6 +19,10 @@
         }
     } else if (self.navigationController.viewControllers.count > 1) {
         [self.navigationController popViewControllerAnimated:YES];
+    } else {
+        [self dismissViewControllerAnimated:YES completion:^{
+                    
+        }];
     }
 }
 @end

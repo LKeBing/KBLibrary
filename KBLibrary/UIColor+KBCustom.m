@@ -11,15 +11,15 @@
 
 
 #pragma mark 16进制颜色
-+ (UIColor *)kbColorWithHex:(int)hex {
-    return [UIColor kbColorWithHex:hex alpha:1.0];
++ (UIColor *)kb_colorWithHex:(int)hex {
+    return [UIColor kb_colorWithHex:hex alpha:1.0];
 }
-+ (UIColor *)kbColorWithHex:(int)hex alpha:(CGFloat)alpha {
++ (UIColor *)kb_colorWithHex:(int)hex alpha:(CGFloat)alpha {
     return [UIColor colorWithRed:((float)((hex & 0xFF0000) >> 16))/255.0
                            green:((float)((hex & 0xFF00) >> 8))/255.0
                             blue:((float)(hex & 0xFF))/255.0 alpha:alpha];
 }
-+ (UIColor *)kbColorWithHexStr:(NSString *)hexColor {
++ (UIColor *)kb_colorWithHexStr:(NSString *)hexColor {
     hexColor = [hexColor stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     if ([hexColor length] < 6) {
         return nil;
@@ -50,7 +50,7 @@
 }
 
 
-+ (UIColor *)kbRandomColor {
++ (UIColor *)kb_randomColor {
     #ifdef DEBUG
     CGFloat hue = ( arc4random() % 256 / 256.0 );  //  0.0 to 1.0
     CGFloat saturation = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from white
@@ -61,7 +61,7 @@
     #endif
 }
 
-+ (UIColor *)kbColorFromColor:(UIColor *)color1 toColor:(UIColor *)color2 progress:(CGFloat)progress {
++ (UIColor *)kb_colorFromColor:(UIColor *)color1 toColor:(UIColor *)color2 progress:(CGFloat)progress {
     
     if (color1==nil || color2==nil) {
         return nil;

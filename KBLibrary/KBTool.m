@@ -7,7 +7,7 @@
 
 #import "KBTool.h"
 #import <AVFoundation/AVFoundation.h>
-#import "NSObject+KBCustom.h"
+#import "NSObject+KB.h"
 #import "KBMacroDefine.h"
 
 @implementation KBTool

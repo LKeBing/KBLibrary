@@ -8,6 +8,7 @@
 #import "NSData+KBCustom.h"
 
 @implementation NSData (KBCustom)
+
 - (NSString *)kbBytesSizeText {
     NSInteger size = self.length;
     if (size > powf(2, 3*10)) {

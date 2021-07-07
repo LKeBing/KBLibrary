@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface NSData (KBCustom)
 //字节大小
-KBStringProperty kbBytesSizeText
+KBStringProperty kbBytesSizeText;
 @end
 
 NS_ASSUME_NONNULL_END

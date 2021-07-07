@@ -8,6 +8,9 @@
 #import "UIColor+KBCustom.h"
 
 @implementation UIColor (KBExtension)
+
+
+#pragma mark 16进制颜色
 + (UIColor *)kbColorWithHex:(int)hex {
     return [UIColor kbColorWithHex:hex alpha:1.0];
 }
@@ -16,17 +19,6 @@
                            green:((float)((hex & 0xFF00) >> 8))/255.0
                             blue:((float)(hex & 0xFF))/255.0 alpha:alpha];
 }
-+ (UIColor *)kbRandomColor {
-    #ifdef DEBUG
-    CGFloat hue = ( arc4random() % 256 / 256.0 );  //  0.0 to 1.0
-    CGFloat saturation = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from white
-    CGFloat brightness = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from black
-    return [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
-    #else
-    return [UIColor clearColor];
-    #endif
-}
-//获取16进制颜色的方法
 + (UIColor *)kbColorWithHexStr:(NSString *)hexColor {
     hexColor = [hexColor stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     if ([hexColor length] < 6) {
@@ -56,6 +48,19 @@
     }
     return [UIColor colorWithRed:((float)r / 255.0f) green:((float)g / 255.0f) blue:((float)b / 255.0f) alpha:((float)a / 255.0f)];
 }
+
+
++ (UIColor *)kbRandomColor {
+    #ifdef DEBUG
+    CGFloat hue = ( arc4random() % 256 / 256.0 );  //  0.0 to 1.0
+    CGFloat saturation = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from white
+    CGFloat brightness = ( arc4random() % 128 / 256.0 ) + 0.5;  //  0.5 to 1.0, away from black
+    return [UIColor colorWithHue:hue saturation:saturation brightness:brightness alpha:1];
+    #else
+    return [UIColor clearColor];
+    #endif
+}
+
 + (UIColor *)kbColorFromColor:(UIColor *)color1 toColor:(UIColor *)color2 progress:(CGFloat)progress {
     
     if (color1==nil || color2==nil) {

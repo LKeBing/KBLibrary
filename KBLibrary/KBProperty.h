@@ -54,7 +54,7 @@
 #define KBBlockProperty                         KBCopyProperty
 
 
-#define kbAppDelegateProperty(ProtocolType)        KBWeakProperty id<ProtocolType>
-#define kbAppDelegatesProperty(ProtocolType)       KBStrongProperty NSMutableSet<id<ProtocolType>> *
+#define KBDelegateProperty(ProtocolType)        KBWeakProperty id<ProtocolType>
+#define KBDelegatesProperty(ProtocolType)       KBStrongProperty NSMutableSet<id<ProtocolType>> *
 
 #endif /* KBProperty_h */

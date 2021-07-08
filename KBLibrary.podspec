@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name         = "KBLibrary"
-s.version      = "1.0.12"
+s.version      = "1.0.13"
 s.ios.deployment_target = '9.0'
 s.summary      = "iOS develop tools"
 s.homepage     = "https://github.com/LKeBing/KBLibrary"
@@ -12,7 +12,7 @@ s.ios.frameworks = 'Foundation', 'UIKit','AVFoundation'
 
 s.source_files = 'KBLibrary'
 
-#s.dependency 'AFNetworking' , '~> 3.2.1'
+s.dependency 'AFNetworking'
 s.dependency 'MJRefresh'
 s.dependency 'SVProgressHUD'
 s.dependency 'SDWebImage'

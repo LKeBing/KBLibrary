@@ -10,18 +10,13 @@
 
 @implementation UIView (KB)
 
--(UIWindow *)kbKeyWindow
-{
-    if (self.window)
-    {
+- (UIWindow *)kbKeyWindow {
+    if (self.window) {
         return self.window;
-    }
-    else
-    {
+    } else {
         return [KBTool keyWindow];
     }
 }
-- (void)setKbKeyWindow:(UIWindow *)kbKeyWindow {}
 
 - (UIViewController *)kbContainerViewController {
     for (UIView* next = [self superview]; next; next = next.superview) {
@@ -32,7 +27,6 @@
     }
     return nil;
 }
-- (void)setKbContainerViewController:(UIViewController *)kbContainerViewController {}
 
 - (void)setKbCornerRadius:(CGFloat)kbCornerRadius {
     [self.layer setMasksToBounds:YES];

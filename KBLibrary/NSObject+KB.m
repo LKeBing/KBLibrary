@@ -9,60 +9,27 @@
 #import <objc/runtime.h>
 
 @implementation NSObject (KB)
-//返回当前类的所有属性
-+ (NSArray *)allPropertieNames {
-    
-    Class cls = [self class];
-    
-    NSMutableArray *propertyNames = [NSMutableArray array];
-    
-    if (cls && ![NSStringFromClass(cls) isEqualToString:@"NSObject"]) {
-        // 获取当前类的所有属性
-        unsigned int count;// 记录属性个数
-        objc_property_t *properties = class_copyPropertyList(cls, &count);// 得到所有属性的一个指针数组
-        
-        // 遍历
-        for (int i = 0; i < count; i++) {
-            
-            // An opaque type that represents an Objective-C declared property.
-            // objc_property_t 属性类型
-            objc_property_t property = properties[i];
-            // 获取属性的名称 C语言字符串
-            const char *cName = property_getName(property);
-            // 转换为Objective C 字符串
-            NSString *name = [NSString stringWithCString:cName encoding:NSUTF8StringEncoding];
-            [propertyNames addObject:name];
-        }
-    }
-    
-    return propertyNames;
-}
 
-+ (NSString *)className {
++ (NSString *)kbClassName {
     return NSStringFromClass([self class]);
 }
 
-- (BOOL)isValidate {
+- (BOOL)kbValidate {
     if (self == nil || [self isKindOfClass:[NSNull class]]) {
         return NO;
     } else {
         if ([self isKindOfClass:[NSString class]]) {
             NSString *str = (NSString *)self;
-            if ([str.lowercaseString isEqualToString:@"null"] || str.length <= 0) {
-                return NO;
-            }
+            return str.length > 0 && ![str.lowercaseString isEqualToString:@"null"];
         } else if ([self isKindOfClass:[NSDictionary class]]) {
-            NSDictionary *dictionary = (NSDictionary *)[self copy];
-            if (dictionary.count == 0) {
-                return NO;
-            }
+            NSDictionary *dictionary = (NSDictionary *)self;
+            return dictionary.count > 0;
         } else if ([self isKindOfClass:[NSArray class]]) {
-            NSArray *array = (NSArray *)[self copy];
-            if (array.count == 0) {
-                return NO;
-            }
+            NSArray *array = (NSArray *)self;
+            return array.count > 0;
+        } else {
+            return YES;
         }
-        return YES;
     }
 }
 
@@ -86,15 +53,37 @@
     return YES;
 }
 
-+ (BOOL)kb_swizzleClassMethod:(SEL)systemSEL withMethod:(SEL)customSEL {
-    return [object_getClass((id)self) kb_swizzleMethod:systemSEL withMethod:customSEL];
-}
-- (BOOL)kb_isMethodOverride:(Class)cls selector:(SEL)sel {
-    IMP clsIMP = class_getMethodImplementation(cls, sel);
-    IMP superClsIMP = class_getMethodImplementation([cls superclass], sel);
-    
++ (BOOL)kb_isMethodOverride:(SEL)sel {
+    IMP clsIMP = class_getMethodImplementation(self, sel);
+    IMP superClsIMP = class_getMethodImplementation([self superclass], sel);
     return clsIMP != superClsIMP;
 }
 
+//返回当前类的属性名字
++ (NSArray *)kb_propertieNames {
+    
+    Class cls = [self class];
+    
+    NSMutableArray *propertyNames = [NSMutableArray array];
+    
+    if (cls && ![NSStringFromClass(cls) isEqualToString:@"NSObject"]) {
+        // 获取当前类的所有属性
+        unsigned int count;// 记录属性个数
+        objc_property_t *properties = class_copyPropertyList(cls, &count);// 得到所有属性的一个指针数组
+        // 遍历
+        for (int i = 0; i < count; i++) {
+            // An opaque type that represents an Objective-C declared property.
+            // objc_property_t 属性类型
+            objc_property_t property = properties[i];
+            // 获取属性的名称 C语言字符串
+            const char *cName = property_getName(property);
+            // 转换为Objective C 字符串
+            NSString *name = [NSString stringWithCString:cName encoding:NSUTF8StringEncoding];
+            [propertyNames addObject:name];
+        }
+    }
+    
+    return propertyNames.copy;
+}
 
 @end

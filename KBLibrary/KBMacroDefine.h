@@ -12,23 +12,25 @@
 
 //打印
 #ifdef DEBUG
-#define NSLog(FORMAT, ...) fprintf(stderr,"%s:%d \t%s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#define KBLog(FORMAT, ...) fprintf(stderr,"%s:%d \t%s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
 #else
+#define KBLog(FORMAT, ...) nil
 #define NSLog(FORMAT, ...) nil
 #endif
 
 // 设备屏幕尺寸 （逻辑分辨率）
-#define     kbScreenWidth                [UIScreen mainScreen].bounds.size.width
-#define     kbScreenHeight               [UIScreen mainScreen].bounds.size.height
+#define     kbScreenWidth       [UIScreen mainScreen].bounds.size.width
+#define     kbScreenHeight      [UIScreen mainScreen].bounds.size.height
 
 #define kbSharedApplication     [UIApplication sharedApplication]
-#define kbDelegate              ((AppDelegate *)kbSharedApplication.delegate)
+#define kbAppDelegate           ((AppDelegate *)kbSharedApplication.delegate)
 
 // 沙盒路径
 #define kbSandboxPath           NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,  NSUserDomainMask, YES).lastObject
 
 #define kbUserDefaults          [NSUserDefaults standardUserDefaults]
 #define kbNotificationCenter    [NSNotificationCenter defaultCenter]
+
 //是否是横屏
 #define kbScreenIsLandscape     kbSharedApplication.statusBarOrientation >= 3
 

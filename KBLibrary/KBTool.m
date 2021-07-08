@@ -172,13 +172,13 @@
 
 #pragma 获取视频帧图部分
 + (UIImage *)getVideoThumbImageWithUrl:(NSString *)videoUrl {
-    if (!videoUrl.isValidate) {
+    if (!videoUrl.kbValidate) {
         return nil;
     }
     return [self getVideoThumbImageWithURL:[NSURL URLWithString:videoUrl]];
 }
 + (UIImage *)getVideoThumbImageWithURL:(NSURL *)videoURL {
-    if (!videoURL.isValidate) {
+    if (!videoURL.kbValidate) {
         return nil;
     }
     AVURLAsset *asset = [AVURLAsset assetWithURL:videoURL];
@@ -386,7 +386,10 @@
 //    return param;
 //}
 
-+ (CGFloat)roundForTwoDecimal:(CGFloat)decimal {
++ (CGFloat)roundTo1Decimal:(CGFloat)decimal {
+    return [self roundDecimal:decimal count:1];
+}
++ (CGFloat)roundTo2Decimal:(CGFloat)decimal {
     return [self roundDecimal:decimal count:2];
 }
 + (CGFloat)roundDecimal:(CGFloat)decimal count:(NSInteger)count {

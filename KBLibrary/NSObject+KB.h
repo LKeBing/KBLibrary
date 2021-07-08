@@ -10,22 +10,24 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NSObject (KB)
-//返回当前类的所有属性
-+ (NSArray *)allPropertieNames;
-
-@property (nonatomic, assign, readonly) BOOL isValidate;
 
 /// 类名
-@property (class, nonatomic, copy, readonly) NSString *className;
+@property (class, nonatomic, copy, readonly) NSString *kbClassName;
 
+/// 验证该对象是否有效，主要是查看是否为nil，或者内容是否为空
+@property (nonatomic, assign, readonly) BOOL kbValidate;
+
+/// 魔法交换两个实例方法的方法体
+/// @param systemSEL 系统的实例方法
+/// @param customSEL 自定义实例方法
 + (BOOL)kb_swizzleMethod:(SEL)systemSEL withMethod:(SEL)customSEL;
-+ (BOOL)kb_swizzleClassMethod:(SEL)systemSEL withMethod:(SEL)customSEL;
-
 
 /// 判断某个类是否重写了某个方法
-/// @param cls 要判断的类
 /// @param sel 要判断的方法
-- (BOOL)kb_isMethodOverride:(Class)cls selector:(SEL)sel;
++ (BOOL)kb_isMethodOverride:(SEL)sel;
+
+/// 返回当前类的属性名字
++ (NSArray *)kb_propertieNames;
 
 @end
 

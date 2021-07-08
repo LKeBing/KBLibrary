@@ -11,9 +11,16 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIView (KB)
-KBStrongPropertyWithClass(UIWindow) kbKeyWindow;
-KBStrongPropertyWithClass(UIViewController) kbContainerViewController;
+
+/// 获取keyWindow
+KBStrongReadPropertyWithClass(UIWindow) kbKeyWindow;
+
+/// 包含当前view的viewController
+KBStrongReadPropertyWithClass(UIViewController) kbContainerViewController;
+
+/// 圆角
 KBFloatProperty kbCornerRadius;
+
 @end
 
 NS_ASSUME_NONNULL_END

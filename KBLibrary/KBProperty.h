@@ -16,12 +16,11 @@
 #define KBStrongProperty                        @property (nonatomic, strong, nullable)
 #define KBWeakProperty                          @property (nonatomic, weak, nullable)
 
-#define KBStrongReadProperty                    @property (nonatomic, strong, readonly)
-#define KBCopyReadProperty                      @property (nonatomic, copy, readonly)
-
-
 #define KBStrongPropertyWithClass(class)        KBStrongProperty class *
 
+#define KBStrongReadProperty                    @property (nonatomic, strong, readonly)
+#define KBCopyReadProperty                      @property (nonatomic, copy, readonly)
+#define KBStrongReadPropertyWithClass(class)    KBStrongReadProperty class *
 
 #define KBStringProperty                        KBCopyProperty NSString *
 #define KBDataProperty                          KBStrongProperty NSData *
@@ -55,7 +54,7 @@
 #define KBBlockProperty                         KBCopyProperty
 
 
-#define KBDelegateProperty(ProtocolType)        KBWeakProperty id<ProtocolType>
-#define KBDelegatesProperty(ProtocolType)       KBStrongProperty NSMutableSet<id<ProtocolType>> *
+#define kbAppDelegateProperty(ProtocolType)        KBWeakProperty id<ProtocolType>
+#define kbAppDelegatesProperty(ProtocolType)       KBStrongProperty NSMutableSet<id<ProtocolType>> *
 
 #endif /* KBProperty_h */

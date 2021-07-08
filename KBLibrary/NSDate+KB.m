@@ -7,6 +7,22 @@
 
 #import "NSDate+KB.h"
 
+@implementation NSDateFormatter (KB)
+
++ (NSDateFormatter *)kb_dateFormatterWithformat:(NSString *)format {
+    return [self kb_dateFormatterWithformat:format timeZone:nil locale:nil];
+}
+
++ (NSDateFormatter *)kb_dateFormatterWithformat:(NSString *)format timeZone:(NSTimeZone *)timeZone locale:(NSLocale *)locale {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:format];
+    if (timeZone) [formatter setTimeZone:timeZone];
+    if (locale) [formatter setLocale:locale];
+    return formatter;
+}
+
+@end
+
 @implementation NSDate (KB)
 
 - (NSInteger)kb_era {
@@ -71,8 +87,7 @@
 
 - (BOOL)kb_isLeapYear {
     NSUInteger year = self.kb_year;
-    if ((year % 400 == 0) || (year % 100 == 0) || (year % 4 == 0)) return YES;
-    return NO;
+    return (year % 400 == 0) || (year % 100 == 0) || (year % 4 == 0);
 }
 
 - (BOOL)kb_isToday {
@@ -81,11 +96,11 @@
 }
 
 - (BOOL)kb_isYesterday {
-    return [[self kb_dateByAddingDays:1] kb_isToday];
+    return [[self kb_nextDate] kb_isToday];
 }
 
 - (BOOL)kb_isTomorrow {
-    return [[self kb_dateByAddingDays:-1] kb_isToday];
+    return [[self kb_lastDate] kb_isToday];
 }
 
 - (NSDate *)kb_dateByAddingYears:(NSInteger)years {
@@ -133,51 +148,46 @@
     return newDate;
 }
 
-+ (NSDate *)kb_nextDate {
-    return [NSDate dateWithTimeInterval:kbDayTimeInterval sinceDate:[NSDate date]];
+- (NSDate *)kb_nextDate {
+    return [self kb_dateByAddingDays:1];
 }
 
-+ (NSDate *)kb_lastDate {
-    return [NSDate dateWithTimeInterval:-kbDayTimeInterval sinceDate:[NSDate date]];;
+- (NSDate *)kb_lastDate {
+    return [self kb_dateByAddingDays:-1];
 }
 
-+ (NSDate *)kb_dateFromString:(NSString *)dateString format:(NSString *)format {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:format];
-    return [formatter dateFromString:dateString];
++ (NSDate *)kb_yesterday {
+    return [[NSDate date] kb_lastDate];
 }
 
-+ (NSDate *)kb_dateFromString:(NSString *)dateString format:(NSString *)format timeZone:(NSTimeZone *)timeZone locale:(NSLocale *)locale {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:format];
-    if (timeZone) [formatter setTimeZone:timeZone];
-    if (locale) [formatter setLocale:locale];
-    return [formatter dateFromString:dateString];
++ (NSDate *)kb_tomorrow {
+    return [[NSDate date] kb_nextDate];;
 }
 
-+ (NSDate *)kb_dateFromISOFormatString:(NSString *)dateString {
++ (NSDate *)kb_dateFromString:(NSString *)string format:(NSString *)format {
+    return [self kb_dateFromString:string format:format timeZone:nil locale:nil];
+}
+
++ (NSDate *)kb_dateFromString:(NSString *)string format:(NSString *)format timeZone:(NSTimeZone *)timeZone locale:(NSLocale *)locale {
+    NSDateFormatter *formatter = [NSDateFormatter kb_dateFormatterWithformat:format timeZone:timeZone locale:locale];
+    return [formatter dateFromString:string];
+}
+
++ (NSDate *)kb_dateFromISOFormatString:(NSString *)string {
     static NSDateFormatter *formatter = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        formatter = [[NSDateFormatter alloc] init];
-        formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-        formatter.dateFormat = ISODateFormat;
+        formatter = [NSDateFormatter kb_dateFormatterWithformat:ISODateFormat timeZone:nil locale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
     });
-    return [formatter dateFromString:dateString];
+    return [formatter dateFromString:string];
 }
 
 - (NSString *)kb_stringWithFormat:(NSString *)format {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:format];
-    [formatter setLocale:[NSLocale currentLocale]];
-    return [formatter stringFromDate:self];
+    return [self kb_stringWithFormat:format timeZone:nil locale:[NSLocale currentLocale]];
 }
 
 - (NSString *)kb_stringWithFormat:(NSString *)format timeZone:(NSTimeZone *)timeZone locale:(NSLocale *)locale {
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:format];
-    if (timeZone) [formatter setTimeZone:timeZone];
-    if (locale) [formatter setLocale:locale];
+    NSDateFormatter *formatter = [NSDateFormatter kb_dateFormatterWithformat:format timeZone:timeZone locale:locale];
     return [formatter stringFromDate:self];
 }
 
@@ -185,19 +195,19 @@
     static NSDateFormatter *formatter = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        formatter = [[NSDateFormatter alloc] init];
-        formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"];
-        formatter.dateFormat = ISODateFormat;
+        formatter = [NSDateFormatter kb_dateFormatterWithformat:ISODateFormat timeZone:nil locale:[[NSLocale alloc] initWithLocaleIdentifier:@"en_US_POSIX"]];
     });
     return [formatter stringFromDate:self];
 }
 
-//传入时间返回星期几
 - (NSString*)kb_weekdayText {
     NSArray *weekdays = [NSArray arrayWithObjects: [NSNull null], @"星期日", @"星期一", @"星期二", @"星期三", @"星期四", @"星期五", @"星期六", nil];
     return [weekdays objectAtIndex:[self kb_weekday]];
 }
 
+
+
+#pragma mark --以下方法和业务关联太多，暂不对外开放接口
 
 - (NSString *)kb_shortTimeText {
     if ([self kb_isToday]) {

@@ -28,7 +28,6 @@
 #import "KBMacroDefine.h"
 #import "KBProperty.h"
 #import "KBBlock.h"
-#import "KBDateFormat.h"
 #import "KBTool.h"
 #import "NSObject+KB.h"
 #import "NSString+KB.h"

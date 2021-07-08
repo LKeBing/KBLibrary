@@ -29,8 +29,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 //四舍五入保留多少位小数
 + (CGFloat)roundDecimal:(CGFloat)decimal count:(NSInteger)count;
+//四舍五入保留1位小数
++ (CGFloat)roundTo1Decimal:(CGFloat)decimal;
 //四舍五入保留2位小数
-+ (CGFloat)roundForTwoDecimal:(CGFloat)decimal;
++ (CGFloat)roundTo2Decimal:(CGFloat)decimal;
 
 + (UIWindow *)keyWindow;
 + (CGFloat)statusBarHeight;

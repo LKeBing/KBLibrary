@@ -6,6 +6,7 @@
 //
 
 #import "NSDate+KB.h"
+#import "NSObject+KB.h"
 
 @implementation NSDateFormatter (KB)
 
@@ -182,6 +183,9 @@
     return [formatter dateFromString:string];
 }
 
+
+
+
 - (NSString *)kb_stringWithFormat:(NSString *)format {
     return [self kb_stringWithFormat:format timeZone:nil locale:[NSLocale currentLocale]];
 }
@@ -203,6 +207,23 @@
 - (NSString*)kb_weekdayText {
     NSArray *weekdays = [NSArray arrayWithObjects: [NSNull null], @"星期日", @"星期一", @"星期二", @"星期三", @"星期四", @"星期五", @"星期六", nil];
     return [weekdays objectAtIndex:[self kb_weekday]];
+}
+
++ (NSString *)kb_stringWithSecondSince1970:(NSNumber *)secsNum format:(NSString *)format {
+    if (!secsNum.kbValidate) {
+        return nil;
+    }
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[secsNum integerValue]];
+    NSDateFormatter *formatter = [NSDateFormatter kb_dateFormatterWithformat:format timeZone:nil locale:nil];
+    return [formatter stringFromDate:date];
+}
++ (NSString *)kb_stringWithMillisecondSince1970:(NSNumber *)mSecsNum format:(NSString *)format {
+    if (!mSecsNum.kbValidate) {
+        return nil;
+    }
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[mSecsNum integerValue]/1000.f];
+    NSDateFormatter *formatter = [NSDateFormatter kb_dateFormatterWithformat:format timeZone:nil locale:nil];
+    return [formatter stringFromDate:date];
 }
 
 

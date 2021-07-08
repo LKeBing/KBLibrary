@@ -7,6 +7,7 @@
 
 #import "NSObject+KB.h"
 #import <objc/runtime.h>
+#import "KBTool.h"
 
 @implementation NSObject (KB)
 
@@ -84,6 +85,24 @@
     }
     
     return propertyNames.copy;
+}
+
+- (UIViewController *)viewController {
+    UIViewController *resultVC;
+    resultVC = [self _viewController:[[KBTool keyWindow] rootViewController]];
+    while (resultVC.presentedViewController) {
+        resultVC = [self _viewController:resultVC.presentedViewController];
+    }
+    return resultVC;
+}
+- (UIViewController *)_viewController:(UIViewController *)vc {
+    if ([vc isKindOfClass:[UINavigationController class]]) {
+        return [self _viewController:[(UINavigationController *)vc topViewController]];
+    } else if ([vc isKindOfClass:[UITabBarController class]]) {
+        return [self _viewController:[(UITabBarController *)vc selectedViewController]];
+    } else {
+        return vc;
+    }
 }
 
 @end

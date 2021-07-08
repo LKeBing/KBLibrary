@@ -89,6 +89,9 @@ static NSString * _Nullable const ISODateFormat = @"yyyy-MM-dd'T'HH:mm:ssZ";
 - (NSString *)kb_stringWithISOFormat;
 - (NSString *)kb_weekdayText;
 
++ (NSString *)kb_stringWithSecondSince1970:(NSNumber *)secsNum format:(NSString *)format;
++ (NSString *)kb_stringWithMillisecondSince1970:(NSNumber *)mSecsNum format:(NSString *)format;
+
 @end
 
 NS_ASSUME_NONNULL_END

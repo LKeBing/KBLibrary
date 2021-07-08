@@ -25,4 +25,18 @@
         }];
     }
 }
+
+- (void)kb_pushViewController:(UIViewController *)vc {
+    [self kb_pushViewController:vc animated:YES];
+}
+- (void)kb_pushViewController:(UIViewController *)vc animated:(BOOL)animated {
+    [self.navigationController pushViewController:vc animated:animated];
+}
+- (void)kb_presentViewController:(UIViewController *)vc {
+    [self kb_presentViewController:vc animated:YES];
+}
+- (void)kb_presentViewController:(UIViewController *)vc animated:(BOOL)animated {
+    [self presentViewController:vc animated:animated completion:nil];
+}
+
 @end

@@ -1,18 +1,18 @@
 //
-//  KBTranslucentAlertViewController.m
+//  KBTranslucentViewController.m
 //  SXT
 //
 //  Created by SXJY on 2021/6/23.
 //  Copyright © 2021 KeBing. All rights reserved.
 //
 
-#import "KBTranslucentAlertViewController.h"
+#import "KBTranslucentViewController.h"
 
-@interface KBTranslucentAlertViewController ()<UIGestureRecognizerDelegate>
+@interface KBTranslucentViewController ()<UIGestureRecognizerDelegate>
 
 @end
 
-@implementation KBTranslucentAlertViewController
+@implementation KBTranslucentViewController
 
 - (instancetype)init {
     self = [super init];
@@ -25,12 +25,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.view.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
+    self.alpha = 0.4;
     
     [self addDismissGes];
 }
 
-
+- (void)setAlpha:(CGFloat)alpha {
+    _alpha = alpha;
+    
+    self.view.backgroundColor = [UIColor colorWithWhite:0 alpha:alpha];
+}
 
 
 

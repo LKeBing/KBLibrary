@@ -33,17 +33,20 @@
 #import "KBTool.h"
 #import "NSObject+KB.h"
 #import "NSString+KB.h"
+#import "NSArray+KB.h"
+#import "NSMutableArray+KB.h"
 #import "NSData+KB.h"
 #import "NSDate+KB.h"
 #import "UIImage+KB.h"
-#import "NSMutableArray+KB.h"
 #import "UIColor+KB.h"
 #import "UIView+KB.h"
 #import "UIImageView+KB.h"
+#import "UIButton+KB.h"
+#import "UIScrollView+KB.h"
 #import "UITableView+KB.h"
 #import "UIViewController+KB.h"
 #import "KBTreeModel.h"
-#import "KBTranslucentAlertViewController.h"
+#import "KBTranslucentViewController.h"
 
 #endif
 

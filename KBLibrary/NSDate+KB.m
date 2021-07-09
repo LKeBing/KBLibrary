@@ -136,6 +136,31 @@
     return [formatter stringFromDate:self];
 }
 
+- (NSString *)kb_msStringFromSecondInterval:(NSInteger)secondInterval format:(NSString *)format {
+    if (secondInterval<0) {
+        return nil;
+    }
+    
+    NSInteger minute = secondInterval / 60;//分
+    NSInteger second = secondInterval % 60;//秒
+    if ([format isEqualToString:dateFormat12]) {
+        NSString *minuteStri = minute < 10 ? [NSString stringWithFormat:@"0%@",@(minute)] : [NSString stringWithFormat:@"%@",@(minute)];
+        NSString *secondStri = second < 10 ? [NSString stringWithFormat:@"0%@",@(second)] : [NSString stringWithFormat:@"%@",@(second)];
+        return [NSString stringWithFormat:@"%@:%@",minuteStri,secondStri];
+    } else if ([format isEqualToString:dateFormat13]) {
+        NSMutableString *timeStr = [NSMutableString new];
+        if (minute > 0) {
+            [timeStr appendFormat:@"%@′",@(minute)];
+        }
+        if (second > 0) {
+            [timeStr appendFormat:@"%@″",@(second)];
+        }
+        return timeStr.copy;
+    } else {
+        return [NSString stringWithFormat:@"%ld",secondInterval];
+    }
+}
+
 @end
 
 @implementation NSDate (KBServer)

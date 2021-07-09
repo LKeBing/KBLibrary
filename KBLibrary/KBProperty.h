@@ -31,6 +31,8 @@
 #define KBIntegerProperty                       KBAssignProperty NSInteger
 #define KBFloatProperty                         KBAssignProperty CGFloat
 #define KBBOOLProperty                          KBAssignProperty BOOL
+#define KBSizeProperty                          KBAssignProperty CGSize
+#define KBPointProperty                         KBAssignProperty CGPoint
 #define KBInsetsProperty                        KBAssignProperty UIEdgeInsets
 #define KBStrongIdProperty                      KBStrongProperty id
 

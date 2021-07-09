@@ -31,6 +31,12 @@
 #define kbUserDefaults          [NSUserDefaults standardUserDefaults]
 #define kbNotificationCenter    [NSNotificationCenter defaultCenter]
 
+#define kb_post_notification(name) [kbNotificationCenter postNotificationName:name object:nil]//发布一个建议通知，不传任何值
+
+#define kb_keep_screen_light        kbSharedApplication.idleTimerDisabled = YES;//保持屏幕常亮
+#define kb_cancel_keep_screen_light kbSharedApplication.idleTimerDisabled = NO;//取消屏幕常亮
+
+
 //是否是横屏
 #define kbScreenIsLandscape     kbSharedApplication.statusBarOrientation >= 3
 

@@ -39,6 +39,8 @@ static NSString * _Nullable const dateFormat11 = @"MM-dd";
 /**@"yyyy-MM-dd'T'HH:mm:ssZ"*/
 static NSString * _Nullable const ISODateFormat = @"yyyy-MM-dd'T'HH:mm:ssZ";
 
+static NSString * _Nullable const dateFormat12 = @"mm:ss";
+static NSString * _Nullable const dateFormat13 = @"m′s″";
 
 @interface NSDateFormatter (KB)
 + (NSDateFormatter *)kb_dateFormatterWithformat:(NSString *)format;
@@ -60,6 +62,11 @@ static NSString * _Nullable const ISODateFormat = @"yyyy-MM-dd'T'HH:mm:ssZ";
 - (NSString *)kb_stringWithFormat:(NSString *)format;
 - (NSString *)kb_stringWithFormat:(NSString *)format timeZone:(NSTimeZone *_Nullable)timeZone locale:(NSLocale *_Nullable)locale;
 - (NSString *)kb_stringWithISOFormat;
+
+/// 分秒显示，目前有两种形式：03:34  、  3′34″ ，分钟数支持显示60及以上，秒数最高59
+/// @param secondInterval 秒
+/// @param format 只支持dateFormat12和dateFormat13
+- (NSString *)kb_msStringFromSecondInterval:(NSInteger)secondInterval format:(NSString *)format;
 
 /**
  用一个时间得到另一个时间：NSDate ---> NSDate

@@ -18,9 +18,6 @@ NS_ASSUME_NONNULL_BEGIN
 + (UIImage *)getVideoThumbImageWithUrl:(NSString *)videoUrl;
 + (UIImage *)getVideoThumbImageWithURL:(NSURL *)videoURL; //获取视频缩略图
 
-/**秒数转分秒*/
-+ (NSString *)getMMSSFromSS:(NSInteger)seconds separator:(NSString *)sep;
-
 /**验证身份证号码*/
 + (BOOL)validateIDCardNumber:(NSString *)value;
 

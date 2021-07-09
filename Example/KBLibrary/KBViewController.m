@@ -9,6 +9,7 @@
 #import "KBViewController.h"
 #import "KBLibrary.h"
 #import "KBTableViewCell.h"
+#import "KBDeleteSubviewsTableViewCell.h"
 
 @interface KBViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -26,16 +27,27 @@
     [self.view addSubview:tableView];
     kb_tableView_register_cell(tableView, UITableViewCell);
     kb_tableView_register_nibCell(tableView, KBTableViewCell);
+    kb_tableView_register_nibCell(tableView, KBDeleteSubviewsTableViewCell);
     
     NSString *test = [NSNull null];
     KBLog(@"%f",test.doubleValue * 3);
+    
+    KBLog(@"%@",[NSURL URLWithString:@""]);
+    
+    KBLog(@"%@",[[NSDate date] kb_stringWithFormat:dateFormat12]);
+    
+    NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:0];
+    NSDateFormatter *formatter = [NSDateFormatter kb_dateFormatterWithformat:dateFormat1];
+    NSLog(@"%@",[formatter stringFromDate:date]);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 10;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row%2==1) {
+    if (indexPath.row == 0) {
+        return kb_tableView_reuse_cell(tableView, KBDeleteSubviewsTableViewCell);
+    } else if (indexPath.row%2==1) {
         UITableViewCell *cell = kb_tableView_reuse_cell(tableView, UITableViewCell);
         cell.backgroundColor = kbRandomColor;
         return cell;
@@ -45,6 +57,9 @@
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        return 120;
+    }
     return [KBTool roundTo2Decimal:110.34857943];
 }
 

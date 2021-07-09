@@ -29,8 +29,13 @@
 		D82F5C8E26942B3B0048C6F4 /* NSObject+KB.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F5C7726942B3A0048C6F4 /* NSObject+KB.m */; };
 		D82F5C8F26942B3B0048C6F4 /* NSDate+KB.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F5C7B26942B3A0048C6F4 /* NSDate+KB.m */; };
 		D82F5C9026942B3B0048C6F4 /* UITableView+KB.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F5C7E26942B3A0048C6F4 /* UITableView+KB.m */; };
-		D82F5C9126942B3B0048C6F4 /* KBTranslucentAlertViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F5C8026942B3A0048C6F4 /* KBTranslucentAlertViewController.m */; };
+		D82F5C9126942B3B0048C6F4 /* KBTranslucentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F5C8026942B3A0048C6F4 /* KBTranslucentViewController.m */; };
 		D82F5C9226942B3B0048C6F4 /* UIView+KB.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F5C8526942B3A0048C6F4 /* UIView+KB.m */; };
+		D8728C0D269804B700F8812F /* UIButton+KB.m in Sources */ = {isa = PBXBuildFile; fileRef = D8728C0C269804B700F8812F /* UIButton+KB.m */; };
+		D8728C1026980E2000F8812F /* NSArray+KB.m in Sources */ = {isa = PBXBuildFile; fileRef = D8728C0F26980E2000F8812F /* NSArray+KB.m */; };
+		D8728C142698105900F8812F /* KBDeleteSubviewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8728C122698105900F8812F /* KBDeleteSubviewsTableViewCell.m */; };
+		D8728C152698105900F8812F /* KBDeleteSubviewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8728C132698105900F8812F /* KBDeleteSubviewsTableViewCell.xib */; };
+		D8728C1A2698393800F8812F /* UIScrollView+KB.m in Sources */ = {isa = PBXBuildFile; fileRef = D8728C192698393800F8812F /* UIScrollView+KB.m */; };
 		D8A8EE9A26957D7D007614CF /* NSMutableArray+KB.m in Sources */ = {isa = PBXBuildFile; fileRef = D8A8EE9926957D7D007614CF /* NSMutableArray+KB.m */; };
 		D8A8EEA926957FF3007614CF /* UIImage+KB.m in Sources */ = {isa = PBXBuildFile; fileRef = D8A8EEA826957FF3007614CF /* UIImage+KB.m */; };
 		D8A8EEAC26958037007614CF /* UIImageView+KB.m in Sources */ = {isa = PBXBuildFile; fileRef = D8A8EEAB26958037007614CF /* UIImageView+KB.m */; };
@@ -65,7 +70,7 @@
 		D82F5C6E26942B3A0048C6F4 /* NSData+KB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+KB.m"; sourceTree = "<group>"; };
 		D82F5C6F26942B3A0048C6F4 /* NSDate+KB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+KB.h"; sourceTree = "<group>"; };
 		D82F5C7026942B3A0048C6F4 /* UIViewController+KB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+KB.m"; sourceTree = "<group>"; };
-		D82F5C7126942B3A0048C6F4 /* KBTranslucentAlertViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KBTranslucentAlertViewController.h; sourceTree = "<group>"; };
+		D82F5C7126942B3A0048C6F4 /* KBTranslucentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KBTranslucentViewController.h; sourceTree = "<group>"; };
 		D82F5C7226942B3A0048C6F4 /* KBTreeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KBTreeModel.m; sourceTree = "<group>"; };
 		D82F5C7326942B3A0048C6F4 /* UITableView+KB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+KB.h"; sourceTree = "<group>"; };
 		D82F5C7426942B3A0048C6F4 /* UIView+KB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+KB.h"; sourceTree = "<group>"; };
@@ -79,7 +84,7 @@
 		D82F5C7D26942B3A0048C6F4 /* NSString+KB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+KB.h"; sourceTree = "<group>"; };
 		D82F5C7E26942B3A0048C6F4 /* UITableView+KB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+KB.m"; sourceTree = "<group>"; };
 		D82F5C7F26942B3A0048C6F4 /* KBTreeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KBTreeModel.h; sourceTree = "<group>"; };
-		D82F5C8026942B3A0048C6F4 /* KBTranslucentAlertViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KBTranslucentAlertViewController.m; sourceTree = "<group>"; };
+		D82F5C8026942B3A0048C6F4 /* KBTranslucentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KBTranslucentViewController.m; sourceTree = "<group>"; };
 		D82F5C8126942B3A0048C6F4 /* UIViewController+KB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+KB.h"; sourceTree = "<group>"; };
 		D82F5C8226942B3A0048C6F4 /* KBMacroDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KBMacroDefine.h; sourceTree = "<group>"; };
 		D82F5C8326942B3A0048C6F4 /* NSObject+KB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+KB.h"; sourceTree = "<group>"; };
@@ -87,6 +92,15 @@
 		D82F5C8526942B3A0048C6F4 /* UIView+KB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+KB.m"; sourceTree = "<group>"; };
 		D82F5C8626942B3A0048C6F4 /* UIColor+KB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+KB.h"; sourceTree = "<group>"; };
 		D82F5C8726942B3A0048C6F4 /* KBProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KBProperty.h; sourceTree = "<group>"; };
+		D8728C0B269804B700F8812F /* UIButton+KB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+KB.h"; sourceTree = "<group>"; };
+		D8728C0C269804B700F8812F /* UIButton+KB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+KB.m"; sourceTree = "<group>"; };
+		D8728C0E26980E2000F8812F /* NSArray+KB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+KB.h"; sourceTree = "<group>"; };
+		D8728C0F26980E2000F8812F /* NSArray+KB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSArray+KB.m"; sourceTree = "<group>"; };
+		D8728C112698105900F8812F /* KBDeleteSubviewsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KBDeleteSubviewsTableViewCell.h; sourceTree = "<group>"; };
+		D8728C122698105900F8812F /* KBDeleteSubviewsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KBDeleteSubviewsTableViewCell.m; sourceTree = "<group>"; };
+		D8728C132698105900F8812F /* KBDeleteSubviewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KBDeleteSubviewsTableViewCell.xib; sourceTree = "<group>"; };
+		D8728C182698393800F8812F /* UIScrollView+KB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+KB.h"; sourceTree = "<group>"; };
+		D8728C192698393800F8812F /* UIScrollView+KB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+KB.m"; sourceTree = "<group>"; };
 		D8A8EE9826957D7D007614CF /* NSMutableArray+KB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+KB.h"; sourceTree = "<group>"; };
 		D8A8EE9926957D7D007614CF /* NSMutableArray+KB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+KB.m"; sourceTree = "<group>"; };
 		D8A8EEA726957FF3007614CF /* UIImage+KB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+KB.h"; sourceTree = "<group>"; };
@@ -196,6 +210,9 @@
 				D827FCDE2696D33000A4DE31 /* KBTableViewCell.h */,
 				D827FCDF2696D33000A4DE31 /* KBTableViewCell.m */,
 				D827FCE02696D33000A4DE31 /* KBTableViewCell.xib */,
+				D8728C112698105900F8812F /* KBDeleteSubviewsTableViewCell.h */,
+				D8728C122698105900F8812F /* KBDeleteSubviewsTableViewCell.m */,
+				D8728C132698105900F8812F /* KBDeleteSubviewsTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -209,10 +226,12 @@
 				D82F5C8726942B3A0048C6F4 /* KBProperty.h */,
 				D82F5C8426942B3A0048C6F4 /* KBTool.h */,
 				D82F5C7626942B3A0048C6F4 /* KBTool.m */,
-				D82F5C7126942B3A0048C6F4 /* KBTranslucentAlertViewController.h */,
-				D82F5C8026942B3A0048C6F4 /* KBTranslucentAlertViewController.m */,
+				D82F5C7126942B3A0048C6F4 /* KBTranslucentViewController.h */,
+				D82F5C8026942B3A0048C6F4 /* KBTranslucentViewController.m */,
 				D82F5C7F26942B3A0048C6F4 /* KBTreeModel.h */,
 				D82F5C7226942B3A0048C6F4 /* KBTreeModel.m */,
+				D8728C0E26980E2000F8812F /* NSArray+KB.h */,
+				D8728C0F26980E2000F8812F /* NSArray+KB.m */,
 				D82F5C7C26942B3A0048C6F4 /* NSData+KB.h */,
 				D82F5C6E26942B3A0048C6F4 /* NSData+KB.m */,
 				D82F5C6F26942B3A0048C6F4 /* NSDate+KB.h */,
@@ -223,12 +242,16 @@
 				D82F5C7726942B3A0048C6F4 /* NSObject+KB.m */,
 				D82F5C7D26942B3A0048C6F4 /* NSString+KB.h */,
 				D82F5C6D26942B3A0048C6F4 /* NSString+KB.m */,
+				D8728C0B269804B700F8812F /* UIButton+KB.h */,
+				D8728C0C269804B700F8812F /* UIButton+KB.m */,
 				D82F5C8626942B3A0048C6F4 /* UIColor+KB.h */,
 				D82F5C7526942B3A0048C6F4 /* UIColor+KB.m */,
 				D8A8EEA726957FF3007614CF /* UIImage+KB.h */,
 				D8A8EEA826957FF3007614CF /* UIImage+KB.m */,
 				D8A8EEAA26958037007614CF /* UIImageView+KB.h */,
 				D8A8EEAB26958037007614CF /* UIImageView+KB.m */,
+				D8728C182698393800F8812F /* UIScrollView+KB.h */,
+				D8728C192698393800F8812F /* UIScrollView+KB.m */,
 				D82F5C7326942B3A0048C6F4 /* UITableView+KB.h */,
 				D82F5C7E26942B3A0048C6F4 /* UITableView+KB.m */,
 				D82F5C7426942B3A0048C6F4 /* UIView+KB.h */,
@@ -298,6 +321,7 @@
 				873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */,
 				71719F9F1E33DC2100824A3D /* LaunchScreen.storyboard in Resources */,
 				6003F5A9195388D20070C39A /* Images.xcassets in Resources */,
+				D8728C152698105900F8812F /* KBDeleteSubviewsTableViewCell.xib in Resources */,
 				6003F598195388D20070C39A /* InfoPlist.strings in Resources */,
 				D827FCE22696D33000A4DE31 /* KBTableViewCell.xib in Resources */,
 			);
@@ -355,16 +379,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8728C142698105900F8812F /* KBDeleteSubviewsTableViewCell.m in Sources */,
 				D8A8EEA926957FF3007614CF /* UIImage+KB.m in Sources */,
 				6003F59E195388D20070C39A /* KBAppDelegate.m in Sources */,
-				D82F5C9126942B3B0048C6F4 /* KBTranslucentAlertViewController.m in Sources */,
+				D82F5C9126942B3B0048C6F4 /* KBTranslucentViewController.m in Sources */,
 				D82F5C9226942B3B0048C6F4 /* UIView+KB.m in Sources */,
+				D8728C0D269804B700F8812F /* UIButton+KB.m in Sources */,
 				D82F5C9026942B3B0048C6F4 /* UITableView+KB.m in Sources */,
 				D82F5C8826942B3A0048C6F4 /* NSString+KB.m in Sources */,
 				D8A8EEAC26958037007614CF /* UIImageView+KB.m in Sources */,
 				D82F5C8F26942B3B0048C6F4 /* NSDate+KB.m in Sources */,
 				D82F5C8A26942B3B0048C6F4 /* UIViewController+KB.m in Sources */,
 				6003F5A7195388D20070C39A /* KBViewController.m in Sources */,
+				D8728C1A2698393800F8812F /* UIScrollView+KB.m in Sources */,
 				D82F5C8B26942B3B0048C6F4 /* KBTreeModel.m in Sources */,
 				D8A8EE9A26957D7D007614CF /* NSMutableArray+KB.m in Sources */,
 				D827FCE12696D33000A4DE31 /* KBTableViewCell.m in Sources */,
@@ -373,6 +400,7 @@
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				D82F5C8926942B3A0048C6F4 /* NSData+KB.m in Sources */,
 				D82F5C8D26942B3B0048C6F4 /* KBTool.m in Sources */,
+				D8728C1026980E2000F8812F /* NSArray+KB.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

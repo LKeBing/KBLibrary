@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)kb_registerNibCell:(NSString *)nibName identifier:(NSString *)identifier;
 - (void)kb_registerNibHeaderFooter:(NSString *)nibName identifier:(NSString *)identifier;
 
+- (void)kb_scrollToBottom:(NSTimeInterval)delay animated:(BOOL)animated;
+
 @end
 
 #define kb_tableView_register_cell(tableView, Cell)\

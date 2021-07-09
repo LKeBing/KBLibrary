@@ -18,9 +18,15 @@ KBStrongReadPropertyWithClass(UIWindow) kbKeyWindow;
 /// 包含当前view的viewController
 KBStrongReadPropertyWithClass(UIViewController) kbContainerViewController;
 
-/// 圆角
-KBFloatProperty kbCornerRadius;
+- (void)kb_removeSubviews;
 
+@end
+
+@interface UIView (KBLayer)
+KBFloatProperty kbCornerRadius;
+KBColorProperty kbShadowColor;
+KBSizeProperty kbShadowOffset;
+KBFloatProperty kbShadowOpacity;
 @end
 
 NS_ASSUME_NONNULL_END

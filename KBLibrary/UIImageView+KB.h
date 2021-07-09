@@ -11,7 +11,12 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface UIImageView (KB)
-- (void)kb_setImageWithName:(NSString *)imageName;
++ (instancetype)kb_imageViewWithImageName:(NSString *)name;
+- (void)kb_setImageWithName:(NSString *)name;
+- (void)kb_setImageWithUrl:(NSString *)url;
+- (void)kb_setImageWithUrl:(NSString *)url placeholderName:(NSString *_Nullable)placeholderName;
+- (void)kb_setImageWithUrl:(NSString *)url placeholderName:(NSString *_Nullable)placeholderName completed:(void (^_Nullable)(UIImage *_Nullable))completion;
+- (void)kb_clearImage;
 @end
 
 NS_ASSUME_NONNULL_END

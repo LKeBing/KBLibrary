@@ -14,6 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 /// 类名
 @property (class, nonatomic, copy, readonly) NSString *kbClassName;
 
+@property (nonatomic, assign, readonly) BOOL kbNull;
+
 /// 验证该对象是否有效，主要是查看是否为nil，或者内容是否为空
 @property (nonatomic, assign, readonly) BOOL kbValidate;
 

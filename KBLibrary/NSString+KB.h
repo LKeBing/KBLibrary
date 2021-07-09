@@ -23,10 +23,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// 将url中的普通字符转为百分比编码字符，例如：“浙江省”转码后即变成了“%E6%B5%99%E6%B1%9F%E7%9C%81”
 /// 若是链接中包含中文、特殊符号&％或是空格等都需要预先进行一下转码才可正常访问
-- (NSString *)kb_encodeUrl;
+- (NSString *)kb_urlEncode;
 
 /// url解码
-- (NSString *)kb_decodeUrl;
+- (NSString *)kb_urlDecode;
 
 @end
 

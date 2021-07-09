@@ -47,6 +47,61 @@ static NSString * _Nullable const ISODateFormat = @"yyyy-MM-dd'T'HH:mm:ssZ";
 
 @interface NSDate (KB)
 
+/**
+ 时间字符串转时间：NSString --->  NSDate
+ */
++ (NSDate *)kb_dateFromString:(NSString *)string format:(NSString *)format;
++ (NSDate *)kb_dateFromString:(NSString *)string format:(NSString *)format timeZone:(NSTimeZone *_Nullable)timeZone locale:(NSLocale *_Nullable)locale;
++ (NSDate *)kb_dateFromISOFormatString:(NSString *)string;
+
+/**
+ 时间转时间字符串：NSDate --->  NSString
+ */
+- (NSString *)kb_stringWithFormat:(NSString *)format;
+- (NSString *)kb_stringWithFormat:(NSString *)format timeZone:(NSTimeZone *_Nullable)timeZone locale:(NSLocale *_Nullable)locale;
+- (NSString *)kb_stringWithISOFormat;
+
+/**
+ 用一个时间得到另一个时间：NSDate ---> NSDate
+ */
+- (NSDate *)kb_dateByAddingYears:(NSInteger)years;
+- (NSDate *)kb_dateByAddingMonths:(NSInteger)months;
+- (NSDate *)kb_dateByAddingWeeks:(NSInteger)weeks;
+- (NSDate *)kb_dateByAddingDays:(NSInteger)days;
+- (NSDate *)kb_dateByAddingHours:(NSInteger)hours;
+- (NSDate *)kb_dateByAddingMinutes:(NSInteger)minutes;
+- (NSDate *)kb_dateByAddingSeconds:(NSInteger)seconds;
+- (NSDate *)kb_nextDate;
+- (NSDate *)kb_lastDate;
+
+
++ (NSDate *)kb_yesterday;
++ (NSDate *)kb_tomorrow;
+
+- (BOOL)kb_isToday;
+- (BOOL)kb_isYesterday;
+- (BOOL)kb_isTomorrow;
+
+@end
+
+/// 该类主要是用于处理常见的服务器时间转换
+@interface NSDate (KBServer)
+
+/**
+ 将服务器返回的时间戳转为时间字符串
+ */
++ (NSString *)kb_stringWithSecondIntervalSince1970:(NSNumber *)secsNum format:(NSString *)format;
++ (NSString *)kb_stringWithMillisecondIntervalSince1970:(NSNumber *)mSecsNum format:(NSString *)format;
+
+/**
+ 将服务器返回的时间字符串转换为另外一种格式的时间字符串
+ */
++ (NSString *)kb_stringFromOriginalString:(NSString *)string originalFormat:(NSString *)originalFormat finalFormat:(NSString *)finalFormat;
+
+@end
+
+@interface NSDate (KBCalender)
+
 - (NSInteger)kb_era;
 - (NSInteger)kb_year;
 - (NSInteger)kb_month;
@@ -64,33 +119,12 @@ static NSString * _Nullable const ISODateFormat = @"yyyy-MM-dd'T'HH:mm:ssZ";
 
 - (BOOL)kb_isLeapMonth;
 - (BOOL)kb_isLeapYear;
-- (BOOL)kb_isToday;
-- (BOOL)kb_isYesterday;
-- (BOOL)kb_isTomorrow;
 
-- (NSDate *)kb_dateByAddingYears:(NSInteger)years;
-- (NSDate *)kb_dateByAddingMonths:(NSInteger)months;
-- (NSDate *)kb_dateByAddingWeeks:(NSInteger)weeks;
-- (NSDate *)kb_dateByAddingDays:(NSInteger)days;
-- (NSDate *)kb_dateByAddingHours:(NSInteger)hours;
-- (NSDate *)kb_dateByAddingMinutes:(NSInteger)minutes;
-- (NSDate *)kb_dateByAddingSeconds:(NSInteger)seconds;
-- (NSDate *)kb_nextDate;
-- (NSDate *)kb_lastDate;
-
-+ (NSDate *)kb_yesterday;
-+ (NSDate *)kb_tomorrow;
-+ (NSDate *)kb_dateFromString:(NSString *)string format:(NSString *)format;
-+ (NSDate *)kb_dateFromString:(NSString *)string format:(NSString *)format timeZone:(NSTimeZone *_Nullable)timeZone locale:(NSLocale *_Nullable)locale;
-+ (NSDate *)kb_dateFromISOFormatString:(NSString *)string;
-
-- (NSString *)kb_stringWithFormat:(NSString *)format;
-- (NSString *)kb_stringWithFormat:(NSString *)format timeZone:(NSTimeZone *_Nullable)timeZone locale:(NSLocale *_Nullable)locale;
-- (NSString *)kb_stringWithISOFormat;
 - (NSString *)kb_weekdayText;
 
-+ (NSString *)kb_stringWithSecondSince1970:(NSNumber *)secsNum format:(NSString *)format;
-+ (NSString *)kb_stringWithMillisecondSince1970:(NSNumber *)mSecsNum format:(NSString *)format;
+@end
+
+@interface NSDate (KBPrivate)
 
 @end
 

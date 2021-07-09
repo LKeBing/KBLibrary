@@ -26,71 +26,6 @@
 
 @implementation NSDate (KB)
 
-- (NSInteger)kb_era {
-    return [[[NSCalendar currentCalendar] components:NSCalendarUnitEra fromDate:self] era];
-}
-
-- (NSInteger)kb_year {
-    return [[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:self] year];
-}
-
-- (NSInteger)kb_month {
-    return [[[NSCalendar currentCalendar] components:NSCalendarUnitMonth fromDate:self] month];
-}
-
-- (NSInteger)kb_day {
-    return [[[NSCalendar currentCalendar] components:NSCalendarUnitDay fromDate:self] day];
-}
-
-- (NSInteger)kb_hour {
-    return [[[NSCalendar currentCalendar] components:NSCalendarUnitHour fromDate:self] hour];
-}
-
-- (NSInteger)kb_minute {
-    return [[[NSCalendar currentCalendar] components:NSCalendarUnitMinute fromDate:self] minute];
-}
-
-- (NSInteger)kb_second {
-    return [[[NSCalendar currentCalendar] components:NSCalendarUnitSecond fromDate:self] second];
-}
-
-- (NSInteger)kb_nanosecond {
-    return [[[NSCalendar currentCalendar] components:NSCalendarUnitSecond fromDate:self] nanosecond];
-}
-
-- (NSInteger)kb_weekday {
-    return [[[NSCalendar currentCalendar] components:NSCalendarUnitWeekday fromDate:self] weekday];
-}
-
-- (NSInteger)kb_weekdayOrdinal {
-    return [[[NSCalendar currentCalendar] components:NSCalendarUnitWeekdayOrdinal fromDate:self] weekdayOrdinal];
-}
-
-- (NSInteger)kb_weekOfMonth {
-    return [[[NSCalendar currentCalendar] components:NSCalendarUnitWeekOfMonth fromDate:self] weekOfMonth];
-}
-
-- (NSInteger)kb_weekOfYear {
-    return [[[NSCalendar currentCalendar] components:NSCalendarUnitWeekOfYear fromDate:self] weekOfYear];
-}
-
-- (NSInteger)kb_yearForWeekOfYear {
-    return [[[NSCalendar currentCalendar] components:NSCalendarUnitYearForWeekOfYear fromDate:self] yearForWeekOfYear];
-}
-
-- (NSInteger)kb_quarter {
-    return [[[NSCalendar currentCalendar] components:NSCalendarUnitQuarter fromDate:self] quarter];
-}
-
-- (BOOL)kb_isLeapMonth {
-    return [[[NSCalendar currentCalendar] components:NSCalendarUnitQuarter fromDate:self] isLeapMonth];
-}
-
-- (BOOL)kb_isLeapYear {
-    NSUInteger year = self.kb_year;
-    return (year % 400 == 0) || (year % 100 == 0) || (year % 4 == 0);
-}
-
 - (BOOL)kb_isToday {
     if (fabs(self.timeIntervalSinceNow) >= kbDayTimeInterval) return NO;
     return [NSDate new].kb_day == self.kb_day;
@@ -183,9 +118,6 @@
     return [formatter dateFromString:string];
 }
 
-
-
-
 - (NSString *)kb_stringWithFormat:(NSString *)format {
     return [self kb_stringWithFormat:format timeZone:nil locale:[NSLocale currentLocale]];
 }
@@ -204,29 +136,111 @@
     return [formatter stringFromDate:self];
 }
 
+@end
+
+@implementation NSDate (KBServer)
+
++ (NSString *)kb_stringWithSecondIntervalSince1970:(NSNumber *)secsNum format:(NSString *)format {
+    if (!secsNum.kbValidate) {
+        return nil;
+    }
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[secsNum doubleValue]];
+    NSDateFormatter *formatter = [NSDateFormatter kb_dateFormatterWithformat:format timeZone:nil locale:nil];
+    return [formatter stringFromDate:date];
+}
+
++ (NSString *)kb_stringWithMillisecondIntervalSince1970:(NSNumber *)mSecsNum format:(NSString *)format {
+    if (!mSecsNum.kbValidate) {
+        return nil;
+    }
+    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[mSecsNum doubleValue]/1000.f];
+    NSDateFormatter *formatter = [NSDateFormatter kb_dateFormatterWithformat:format timeZone:nil locale:nil];
+    return [formatter stringFromDate:date];
+}
+
++ (NSString *)kb_stringFromOriginalString:(NSString *)string originalFormat:(NSString *)originalFormat finalFormat:(NSString *)finalFormat {
+    NSDate *originalDate = [self kb_dateFromString:string format:originalFormat];
+    return [originalDate kb_stringWithFormat:finalFormat];
+}
+
+@end
+
+@implementation NSDate (KBCalender)
+
+- (NSInteger)kb_era {
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitEra fromDate:self] era];
+}
+
+- (NSInteger)kb_year {
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitYear fromDate:self] year];
+}
+
+- (NSInteger)kb_month {
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitMonth fromDate:self] month];
+}
+
+- (NSInteger)kb_day {
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitDay fromDate:self] day];
+}
+
+- (NSInteger)kb_hour {
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitHour fromDate:self] hour];
+}
+
+- (NSInteger)kb_minute {
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitMinute fromDate:self] minute];
+}
+
+- (NSInteger)kb_second {
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitSecond fromDate:self] second];
+}
+
+- (NSInteger)kb_nanosecond {
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitSecond fromDate:self] nanosecond];
+}
+
+- (NSInteger)kb_weekday {
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitWeekday fromDate:self] weekday];
+}
+
+- (NSInteger)kb_weekdayOrdinal {
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitWeekdayOrdinal fromDate:self] weekdayOrdinal];
+}
+
+- (NSInteger)kb_weekOfMonth {
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitWeekOfMonth fromDate:self] weekOfMonth];
+}
+
+- (NSInteger)kb_weekOfYear {
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitWeekOfYear fromDate:self] weekOfYear];
+}
+
+- (NSInteger)kb_yearForWeekOfYear {
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitYearForWeekOfYear fromDate:self] yearForWeekOfYear];
+}
+
+- (NSInteger)kb_quarter {
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitQuarter fromDate:self] quarter];
+}
+
+- (BOOL)kb_isLeapMonth {
+    return [[[NSCalendar currentCalendar] components:NSCalendarUnitQuarter fromDate:self] isLeapMonth];
+}
+
+- (BOOL)kb_isLeapYear {
+    NSUInteger year = self.kb_year;
+    return (year % 400 == 0) || (year % 100 == 0) || (year % 4 == 0);
+}
+
 - (NSString*)kb_weekdayText {
     NSArray *weekdays = [NSArray arrayWithObjects: [NSNull null], @"星期日", @"星期一", @"星期二", @"星期三", @"星期四", @"星期五", @"星期六", nil];
     return [weekdays objectAtIndex:[self kb_weekday]];
 }
 
-+ (NSString *)kb_stringWithSecondSince1970:(NSNumber *)secsNum format:(NSString *)format {
-    if (!secsNum.kbValidate) {
-        return nil;
-    }
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[secsNum integerValue]];
-    NSDateFormatter *formatter = [NSDateFormatter kb_dateFormatterWithformat:format timeZone:nil locale:nil];
-    return [formatter stringFromDate:date];
-}
-+ (NSString *)kb_stringWithMillisecondSince1970:(NSNumber *)mSecsNum format:(NSString *)format {
-    if (!mSecsNum.kbValidate) {
-        return nil;
-    }
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:[mSecsNum integerValue]/1000.f];
-    NSDateFormatter *formatter = [NSDateFormatter kb_dateFormatterWithformat:format timeZone:nil locale:nil];
-    return [formatter stringFromDate:date];
-}
+@end
 
 
+@implementation NSDate (KBPrivate)
 
 #pragma mark --以下方法和业务关联太多，暂不对外开放接口
 

@@ -11,6 +11,8 @@
 #ifdef __OBJC__
 
 #import <QuartzCore/QuartzCore.h>
+#import <objc/runtime.h>
+
 
 /*其他三方库,如需KBLibrary.h自动引入这部分.h文件，请在自己项目中定义KB_AUTO_IMPORT*/
 #ifdef KB_AUTO_IMPORT

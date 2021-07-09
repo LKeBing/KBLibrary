@@ -6,6 +6,7 @@
 //
 
 #import "NSString+KB.h"
+#import "NSObject+KB.h"
 
 @implementation NSString (KB)
 
@@ -22,12 +23,13 @@
 @implementation NSString (KBUrl)
 
 // urlencode
-- (NSString *)kb_encodeUrl {
+- (NSString *)kb_urlEncode {
     return [self stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
 }
 // urldecode
-- (NSString *)kb_decodeUrl {
+- (NSString *)kb_urlDecode {
     return [self stringByRemovingPercentEncoding];
 }
 
 @end
+

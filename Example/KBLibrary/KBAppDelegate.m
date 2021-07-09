@@ -7,13 +7,15 @@
 //
 
 #import "KBAppDelegate.h"
+#import "KBLibrary.h"
 
 @implementation KBAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [KBAppDelegate class];
+    [AvoidCrash makeAllEffective];
+    [AvoidCrash setupNoneSelClassStringsArr:@[@"NSNull"]];
     return YES;
 }
 

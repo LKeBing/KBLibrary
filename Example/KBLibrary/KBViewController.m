@@ -26,6 +26,9 @@
     [self.view addSubview:tableView];
     kb_tableView_register_cell(tableView, UITableViewCell);
     kb_tableView_register_nibCell(tableView, KBTableViewCell);
+    
+    NSString *test = [NSNull null];
+    KBLog(@"%f",test.doubleValue * 3);
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

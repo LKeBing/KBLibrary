@@ -16,7 +16,7 @@
 }
 
 - (BOOL)kbValidate {
-    if (self == nil || [self isKindOfClass:[NSNull class]]) {
+    if (self.kbNull) {
         return NO;
     } else {
         if ([self isKindOfClass:[NSString class]]) {
@@ -32,6 +32,10 @@
             return YES;
         }
     }
+}
+
+- (BOOL)kbNull {
+    return self == nil || [self isKindOfClass:[NSNull class]];
 }
 
 

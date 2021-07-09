@@ -7,6 +7,8 @@
 //
 
 #import "KBAppDelegate.h"
+
+#define KB_AUTO_IMPORT
 #import "KBLibrary.h"
 
 @implementation KBAppDelegate

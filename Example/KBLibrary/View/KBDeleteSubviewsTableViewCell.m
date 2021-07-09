@@ -7,6 +7,7 @@
 //
 
 #import "KBDeleteSubviewsTableViewCell.h"
+#import "KBLibrary.h"
 
 @implementation KBDeleteSubviewsTableViewCell
 

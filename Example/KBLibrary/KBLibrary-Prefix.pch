@@ -14,8 +14,4 @@
     @import UIKit;
     @import Foundation;
 
-#define KB_AUTO_IMPORT
-
-#import "KBLibrary.h"
-
 #endif

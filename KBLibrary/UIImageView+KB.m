@@ -9,6 +9,7 @@
 #import "UIImageView+KB.h"
 #import "UIImage+KB.h"
 #import "UIImageView+WebCache.h"
+#import "NSObject+KB.h"
 
 @implementation UIImageView (KB)
 + (instancetype)kb_imageViewWithImageName:(NSString *)name {

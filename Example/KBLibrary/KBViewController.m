@@ -39,6 +39,11 @@
     NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:0];
     NSDateFormatter *formatter = [NSDateFormatter kb_dateFormatterWithformat:dateFormat1];
     NSLog(@"%@",[formatter stringFromDate:date]);
+    
+    Method method = class_getInstanceMethod(self.class, @selector(viewDidLoad));
+    KBLog(@"%@",[NSString stringWithCString:method_getTypeEncoding(method) encoding:NSUTF8StringEncoding]);
+    
+    [self methodSignatureForSelector:@selector(viewDidLoad)];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

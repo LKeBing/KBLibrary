@@ -19,7 +19,7 @@ DEPENDENCIES:
   - SVProgressHUD
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - AvoidCrash
     - IQKeyboardManager
     - Masonry
@@ -39,4 +39,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 71efac6356fe9e511866350b9d4ef6553a2c85dd
 
-COCOAPODS: 1.10.1
+COCOAPODS: 1.7.3

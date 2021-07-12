@@ -38,32 +38,6 @@
     return self == nil || [self isKindOfClass:[NSNull class]];
 }
 
-
-+ (BOOL)kb_swizzleMethod:(SEL)systemSEL withMethod:(SEL)customSEL {
-    Method origMethod = class_getInstanceMethod(self, systemSEL);
-    Method altMethod = class_getInstanceMethod(self, customSEL);
-    if (!origMethod || !altMethod) {
-        return NO;
-    }
-    class_addMethod(self,
-                    systemSEL,
-                    class_getMethodImplementation(self, systemSEL),
-                    method_getTypeEncoding(origMethod));
-    class_addMethod(self,
-                    customSEL,
-                    class_getMethodImplementation(self, customSEL),
-                    method_getTypeEncoding(altMethod));
-    method_exchangeImplementations(class_getInstanceMethod(self, systemSEL),
-                                   class_getInstanceMethod(self, customSEL));
-    return YES;
-}
-
-+ (BOOL)kb_isMethodOverride:(SEL)sel {
-    IMP clsIMP = class_getMethodImplementation(self, sel);
-    IMP superClsIMP = class_getMethodImplementation([self superclass], sel);
-    return clsIMP != superClsIMP;
-}
-
 //返回当前类的属性名字
 + (NSArray *)kb_propertieNames {
     
@@ -107,6 +81,51 @@
     } else {
         return vc;
     }
+}
+
+
+/**
+ *  类方法的交换
+ *
+ *  @param sel1 方法1
+ *  @param sel2 方法2
+ */
++ (void)kb_exchangeClassMethodWithSel1:(SEL)sel1 sel2:(SEL)sel2 {
+    Class cls = [self class];
+    Method method1 = class_getClassMethod(cls, sel1);
+    Method method2 = class_getClassMethod(cls, sel2);
+    method_exchangeImplementations(method1, method2);
+}
+
+/**
+ *  对象方法的交换
+ *
+ *  @param sel1 方法1(原本的方法)
+ *  @param sel2 方法2(要替换成的方法)
+ */
++ (void)kb_exchangeInstanceMethodWithSel1:(SEL)sel1 sel2:(SEL)sel2 {
+    Class cls = [self class];
+    Method method1 = class_getInstanceMethod(cls, sel1);
+    Method method2 = class_getInstanceMethod(cls, sel2);
+    BOOL didAddMethod = class_addMethod(cls,
+                                        sel1,
+                                        method_getImplementation(method2),
+                                        method_getTypeEncoding(method2));
+    if (didAddMethod) {
+        class_replaceMethod(cls,
+                            sel2,
+                            method_getImplementation(method1),
+                            method_getTypeEncoding(method1));
+    }
+    else {
+        method_exchangeImplementations(method1, method2);
+    }
+}
+
++ (BOOL)kb_isMethodOverride:(SEL)sel {
+    IMP clsIMP = class_getMethodImplementation(self, sel);
+    IMP superClsIMP = class_getMethodImplementation([self superclass], sel);
+    return clsIMP != superClsIMP;
 }
 
 @end

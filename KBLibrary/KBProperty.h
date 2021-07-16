@@ -16,11 +16,12 @@
 #define KBStrongProperty                        @property (nonatomic, strong, nullable)
 #define KBWeakProperty                          @property (nonatomic, weak, nullable)
 
-#define KBStrongPropertyWithClass(class)        KBStrongProperty class *
 
+#define KBStrongPropertyWithClass(class)        KBStrongProperty class *
 #define KBStrongReadProperty                    @property (nonatomic, strong, readonly)
 #define KBCopyReadProperty                      @property (nonatomic, copy, readonly)
 #define KBStrongReadPropertyWithClass(class)    KBStrongReadProperty class *
+
 
 #define KBStringProperty                        KBCopyProperty NSString *
 #define KBDataProperty                          KBStrongProperty NSData *

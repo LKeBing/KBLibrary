@@ -31,6 +31,7 @@
 		D82F5C9026942B3B0048C6F4 /* UITableView+KB.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F5C7E26942B3A0048C6F4 /* UITableView+KB.m */; };
 		D82F5C9126942B3B0048C6F4 /* KBTranslucentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F5C8026942B3A0048C6F4 /* KBTranslucentViewController.m */; };
 		D82F5C9226942B3B0048C6F4 /* UIView+KB.m in Sources */ = {isa = PBXBuildFile; fileRef = D82F5C8526942B3A0048C6F4 /* UIView+KB.m */; };
+		D84B896826A8139600236A51 /* KBTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = D84B896726A8139600236A51 /* KBTextView.m */; };
 		D8728C0D269804B700F8812F /* UIButton+KB.m in Sources */ = {isa = PBXBuildFile; fileRef = D8728C0C269804B700F8812F /* UIButton+KB.m */; };
 		D8728C1026980E2000F8812F /* NSArray+KB.m in Sources */ = {isa = PBXBuildFile; fileRef = D8728C0F26980E2000F8812F /* NSArray+KB.m */; };
 		D8728C142698105900F8812F /* KBDeleteSubviewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D8728C122698105900F8812F /* KBDeleteSubviewsTableViewCell.m */; };
@@ -92,6 +93,8 @@
 		D82F5C8526942B3A0048C6F4 /* UIView+KB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+KB.m"; sourceTree = "<group>"; };
 		D82F5C8626942B3A0048C6F4 /* UIColor+KB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+KB.h"; sourceTree = "<group>"; };
 		D82F5C8726942B3A0048C6F4 /* KBProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KBProperty.h; sourceTree = "<group>"; };
+		D84B896626A8139600236A51 /* KBTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KBTextView.h; sourceTree = "<group>"; };
+		D84B896726A8139600236A51 /* KBTextView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KBTextView.m; sourceTree = "<group>"; };
 		D8728C0B269804B700F8812F /* UIButton+KB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+KB.h"; sourceTree = "<group>"; };
 		D8728C0C269804B700F8812F /* UIButton+KB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+KB.m"; sourceTree = "<group>"; };
 		D8728C0E26980E2000F8812F /* NSArray+KB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSArray+KB.h"; sourceTree = "<group>"; };
@@ -258,6 +261,8 @@
 				D82F5C8526942B3A0048C6F4 /* UIView+KB.m */,
 				D82F5C8126942B3A0048C6F4 /* UIViewController+KB.h */,
 				D82F5C7026942B3A0048C6F4 /* UIViewController+KB.m */,
+				D84B896626A8139600236A51 /* KBTextView.h */,
+				D84B896726A8139600236A51 /* KBTextView.m */,
 			);
 			name = KBLibrary;
 			path = ../../KBLibrary;
@@ -385,6 +390,7 @@
 				D82F5C9126942B3B0048C6F4 /* KBTranslucentViewController.m in Sources */,
 				D82F5C9226942B3B0048C6F4 /* UIView+KB.m in Sources */,
 				D8728C0D269804B700F8812F /* UIButton+KB.m in Sources */,
+				D84B896826A8139600236A51 /* KBTextView.m in Sources */,
 				D82F5C9026942B3B0048C6F4 /* UITableView+KB.m in Sources */,
 				D82F5C8826942B3A0048C6F4 /* NSString+KB.m in Sources */,
 				D8A8EEAC26958037007614CF /* UIImageView+KB.m in Sources */,

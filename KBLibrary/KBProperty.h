@@ -29,6 +29,7 @@
 #define KBViewProperty                          KBStrongProperty UIView *
 #define KBColorProperty                         KBStrongProperty UIColor *
 #define KBImageProperty                         KBStrongProperty UIImage *
+#define KBIntProperty                           KBAssignProperty int
 #define KBIntegerProperty                       KBAssignProperty NSInteger
 #define KBFloatProperty                         KBAssignProperty CGFloat
 #define KBBOOLProperty                          KBAssignProperty BOOL

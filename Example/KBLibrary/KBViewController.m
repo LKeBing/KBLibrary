@@ -10,6 +10,7 @@
 #import "KBLibrary.h"
 #import "KBTableViewCell.h"
 #import "KBDeleteSubviewsTableViewCell.h"
+#import "KBTextView.h"
 
 @interface KBViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -21,29 +22,35 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-    tableView.delegate = self;
-    tableView.dataSource = self;
-    [self.view addSubview:tableView];
-    kb_tableView_register_cell(tableView, UITableViewCell);
-    kb_tableView_register_nibCell(tableView, KBTableViewCell);
-    kb_tableView_register_nibCell(tableView, KBDeleteSubviewsTableViewCell);
+//    UITableView *tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+//    tableView.delegate = self;
+//    tableView.dataSource = self;
+//    [self.view addSubview:tableView];
+//    kb_tableView_register_cell(tableView, UITableViewCell);
+//    kb_tableView_register_nibCell(tableView, KBTableViewCell);
+//    kb_tableView_register_nibCell(tableView, KBDeleteSubviewsTableViewCell);
+//
+//    NSString *test = [NSNull null];
+//    KBLog(@"%f",test.doubleValue * 3);
+//
+//    KBLog(@"%@",[NSURL URLWithString:@""]);
+//
+//    KBLog(@"%@",[[NSDate date] kb_stringWithFormat:dateFormat12]);
+//
+//    NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:0];
+//    NSDateFormatter *formatter = [NSDateFormatter kb_dateFormatterWithformat:dateFormat1];
+//    NSLog(@"%@",[formatter stringFromDate:date]);
+//
+//    Method method = class_getInstanceMethod(self.class, @selector(viewDidLoad));
+//    KBLog(@"%@",[NSString stringWithCString:method_getTypeEncoding(method) encoding:NSUTF8StringEncoding]);
+//
+//    [self methodSignatureForSelector:@selector(viewDidLoad)];
     
-    NSString *test = [NSNull null];
-    KBLog(@"%f",test.doubleValue * 3);
-    
-    KBLog(@"%@",[NSURL URLWithString:@""]);
-    
-    KBLog(@"%@",[[NSDate date] kb_stringWithFormat:dateFormat12]);
-    
-    NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:0];
-    NSDateFormatter *formatter = [NSDateFormatter kb_dateFormatterWithformat:dateFormat1];
-    NSLog(@"%@",[formatter stringFromDate:date]);
-    
-    Method method = class_getInstanceMethod(self.class, @selector(viewDidLoad));
-    KBLog(@"%@",[NSString stringWithCString:method_getTypeEncoding(method) encoding:NSUTF8StringEncoding]);
-    
-    [self methodSignatureForSelector:@selector(viewDidLoad)];
+    KBTextView *textView = [[KBTextView alloc] initWithFrame:CGRectMake(10, 100, kbScreenWidth-20, 400)];
+    textView.backgroundColor = kbRandomColor;
+    textView.textContainerInset = UIEdgeInsetsMake(20, 20, 20, 20);
+    textView.textContainer.lineFragmentPadding = 30;
+    [self.view addSubview:textView];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

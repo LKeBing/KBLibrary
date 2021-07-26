@@ -136,7 +136,7 @@
     return [formatter stringFromDate:self];
 }
 
-- (NSString *)kb_msStringFromSecondInterval:(NSInteger)secondInterval format:(NSString *)format {
++ (NSString *)kb_msStringFromSecondInterval:(NSInteger)secondInterval format:(NSString *)format {
     if (secondInterval<0) {
         return nil;
     }

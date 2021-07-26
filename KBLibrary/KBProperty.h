@@ -16,19 +16,6 @@
 #define KBStrongProperty                        @property (nonatomic, strong, nullable)
 #define KBWeakProperty                          @property (nonatomic, weak, nullable)
 
-
-#define KBStrongPropertyWithClass(class)        KBStrongProperty class *
-#define KBStrongReadProperty                    @property (nonatomic, strong, readonly)
-#define KBCopyReadProperty                      @property (nonatomic, copy, readonly)
-#define KBStrongReadPropertyWithClass(class)    KBStrongReadProperty class *
-
-
-#define KBStringProperty                        KBCopyProperty NSString *
-#define KBDataProperty                          KBStrongProperty NSData *
-#define KBNumberProperty                        KBStrongProperty NSNumber *
-#define KBViewProperty                          KBStrongProperty UIView *
-#define KBColorProperty                         KBStrongProperty UIColor *
-#define KBImageProperty                         KBStrongProperty UIImage *
 #define KBIntProperty                           KBAssignProperty int
 #define KBIntegerProperty                       KBAssignProperty NSInteger
 #define KBFloatProperty                         KBAssignProperty CGFloat
@@ -36,29 +23,42 @@
 #define KBSizeProperty                          KBAssignProperty CGSize
 #define KBPointProperty                         KBAssignProperty CGPoint
 #define KBInsetsProperty                        KBAssignProperty UIEdgeInsets
+
 #define KBStrongIdProperty                      KBStrongProperty id
 
+#define KBStrongPropertyWithClass(class)        KBStrongProperty class *
+#define KBStrongReadProperty                    @property (nonatomic, strong, readonly)
+#define KBCopyReadProperty                      @property (nonatomic, copy, readonly)
+#define KBStrongReadPropertyWithClass(class)    KBStrongReadProperty class *
 
-#define KBArrayProperty                             KBStrongProperty NSArray *
-#define KBMutableArrayProperty                      KBStrongProperty NSMutableArray *
-#define KBArrayPropertyWithType(ObjType)            KBStrongProperty NSArray<ObjType *> *
-#define KBMutableArrayPropertyWithType(ObjType)     KBStrongProperty NSMutableArray<ObjType *> *
+#define KBStringProperty                        KBStrongPropertyWithClass(NSString)
+#define KBDataProperty                          KBStrongPropertyWithClass(NSData)
+#define KBNumberProperty                        KBStrongPropertyWithClass(NSNumber)
+#define KBColorProperty                         KBStrongPropertyWithClass(UIColor)
+#define KBImageProperty                         KBStrongPropertyWithClass(UIImage)
+#define KBURLProperty                           KBStrongPropertyWithClass(NSURL)
 
+#define KBArrayProperty                             KBStrongPropertyWithClass(NSArray)
+#define KBMutableArrayProperty                      KBStrongPropertyWithClass(NSMutableArray)
+#define KBArrayPropertyWithType(ObjType)            KBStrongPropertyWithClass(NSArray<ObjType *>)
+#define KBMutableArrayPropertyWithType(ObjType)     KBStrongPropertyWithClass(NSMutableArray<ObjType *>)
 
-#define KBDictionaryProperty                            KBStrongProperty NSDictionary *
-#define KBMutableDictionaryProperty                     KBStrongProperty NSMutableDictionary *
-#define KBDictionaryPropertyWithType(key,value)         KBStrongProperty NSDictionary<key *,value *> *
-#define KBMutableDictionaryPropertyWithType(key,value)  KBStrongProperty NSMutableDictionary<key *,value *> *
+#define KBDictionaryProperty                            KBStrongPropertyWithClass(NSDictionary)
+#define KBMutableDictionaryProperty                     KBStrongPropertyWithClass(NSMutableDictionary)
+#define KBDictionaryPropertyWithType(key,value)         KBStrongPropertyWithClass(NSDictionary<key *,value *>)
+#define KBMutableDictionaryPropertyWithType(key,value)  KBStrongPropertyWithClass(NSMutableDictionary<key *,value *>)
 
-
-#define KBMutableSetPropertyWithType(ObjType)           KBStrongProperty NSMutableSet<ObjType *> *
-#define KBMutableOrderedSetPropertyWithType(ObjType)    KBStrongProperty NSMutableOrderedSet<ObjType *> *
-
+#define KBMutableSetPropertyWithType(ObjType)           KBStrongPropertyWithClass(NSMutableSet<ObjType *>)
+#define KBMutableOrderedSetPropertyWithType(ObjType)    KBStrongPropertyWithClass(NSMutableOrderedSet<ObjType *>)
 
 #define KBBlockProperty                         KBCopyProperty
 
-
 #define KBDelegateProperty(ProtocolType)        KBWeakProperty id<ProtocolType>
-#define KBDelegatesProperty(ProtocolType)       KBStrongProperty NSMutableSet<id<ProtocolType>> *
+#define KBDelegatesProperty(ProtocolType)       KBStrongPropertyWithClass(NSMutableSet<id<ProtocolType>>)
+
+#define KBViewProperty          KBStrongPropertyWithClass(UIView)
+#define KBLabelProperty         KBStrongPropertyWithClass(UILabel)
+#define KBButtonProperty        KBStrongPropertyWithClass(UIButton)
+#define KBImageViewProperty     KBStrongPropertyWithClass(UIImageView)
 
 #endif /* KBProperty_h */

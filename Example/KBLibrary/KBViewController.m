@@ -46,10 +46,11 @@
 //
 //    [self methodSignatureForSelector:@selector(viewDidLoad)];
     
-    KBTextView *textView = [[KBTextView alloc] initWithFrame:CGRectMake(10, 100, kbScreenWidth-20, 400)];
+    KBTextView *textView = [[KBTextView alloc] initWithFrame:CGRectMake(10, 100, kbScreenWidth-20, 100)];
     textView.backgroundColor = kbRandomColor;
-    textView.textContainerInset = UIEdgeInsetsMake(20, 20, 20, 20);
-    textView.textContainer.lineFragmentPadding = 30;
+    textView.textContainerInset = UIEdgeInsetsMake(10, 10, 10, 10);
+    textView.textContainer.lineFragmentPadding = 0;
+    textView.maxCharCount = 300;
     [self.view addSubview:textView];
 }
 

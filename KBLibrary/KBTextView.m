@@ -10,8 +10,8 @@
 
 @interface KBTextView ()
 
-@property(nullable, nonatomic, strong) UILabel *placeholderLabel;
-KBStrongPropertyWithClass(UILabel) charCountLabel;
+KBLabelProperty placeholderLabel;
+KBLabelProperty charCountLabel;
 
 @end
 
@@ -97,6 +97,11 @@ KBStrongPropertyWithClass(UILabel) charCountLabel;
 {
     [super layoutSubviews];
     self.placeholderLabel.frame = [self placeholderExpectedFrame];
+    
+    if (_charCountLabel) {
+        _charCountLabel.frame = [self charCountExpectedFrame];
+        
+    }
 }
 
 -(void)setPlaceholder:(NSString *)placeholder
@@ -136,11 +141,7 @@ KBStrongPropertyWithClass(UILabel) charCountLabel;
     return CGRectMake(placeholderInsets.left, placeholderInsets.top, maxWidth, expectedSize.height);
 }
 
-- (void)setMaxCharCount:(int)maxCharCount {
-    _maxCharCount = maxCharCount;
-    
-    
-}
+
 
 -(UILabel*)placeholderLabel
 {
@@ -170,6 +171,7 @@ KBStrongPropertyWithClass(UILabel) charCountLabel;
     return _placeholderLabel;
 }
 
+
 //When any text changes on textField, the delegate getter is called. At this time we refresh the textView's placeholder
 -(id<UITextViewDelegate>)delegate
 {
@@ -190,5 +192,62 @@ KBStrongPropertyWithClass(UILabel) charCountLabel;
     
     return newSize;
 }
+
+
+
+
+-(UILabel*)charCountLabel
+{
+    if (_charCountLabel == nil)
+    {
+        _charCountLabel = [[UILabel alloc] init];
+        _charCountLabel.autoresizingMask = (UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleTopMargin);
+        _charCountLabel.font = self.font;
+        _charCountLabel.textAlignment = NSTextAlignmentRight;
+        _charCountLabel.backgroundColor = [UIColor redColor];
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
+        if (@available(iOS 13.0, *)) {
+            _charCountLabel.textColor = [UIColor systemGrayColor];
+        } else
+#endif
+        {
+#if __IPHONE_OS_VERSION_MIN_REQUIRED < 130000
+            _charCountLabel.textColor = [UIColor lightTextColor];
+#endif
+        }
+        [self addSubview:_charCountLabel];
+    }
+    
+    return _charCountLabel;
+}
+- (void)setMaxCharCount:(int)maxCharCount {
+    _maxCharCount = maxCharCount;
+    
+    if (_maxCharCount>0) {
+        UIEdgeInsets insets = self.textContainerInset;
+        insets.bottom += 20;
+        self.textContainerInset = insets;
+        
+        self.charCountLabel.text = [NSString stringWithFormat:@"0/%d",_maxCharCount];
+    } else {
+        [_charCountLabel removeFromSuperview];
+        _charCountLabel = nil;
+    }
+}
+-(UIEdgeInsets)charCountInsets
+{
+    return UIEdgeInsetsMake(self.textContainerInset.top, self.textContainerInset.left + self.textContainer.lineFragmentPadding, self.textContainerInset.bottom, self.textContainerInset.right + self.textContainer.lineFragmentPadding);
+}
+
+-(CGRect)charCountExpectedFrame
+{
+    UIEdgeInsets charCountInsets = [self charCountInsets];
+    CGFloat maxWidth = CGRectGetWidth(self.frame)-charCountInsets.left-charCountInsets.right;
+    
+    CGSize expectedSize = [self.charCountLabel sizeThatFits:CGSizeMake(maxWidth, CGRectGetHeight(self.frame)-charCountInsets.top-charCountInsets.bottom)];
+    
+    return CGRectMake(charCountInsets.left, CGRectGetHeight(self.frame)-expectedSize.height, maxWidth, 20);
+}
+
 
 @end

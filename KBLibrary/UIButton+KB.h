@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)kb_setImageWithName:(nullable NSString *)imageName forState:(UIControlState)state;
 - (void)kb_setBackgroundImageWithName:(nullable NSString *)imageName forState:(UIControlState)state;
 - (void)kb_setTitleFont:(nullable UIFont *)font forState:(UIControlState)state;
+- (void)kb_setNormalTitle:(NSString *)title;
 @end
 
 NS_ASSUME_NONNULL_END

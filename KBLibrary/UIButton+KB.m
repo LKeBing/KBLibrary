@@ -28,5 +28,7 @@
 - (void)kb_setTitleFont:(UIFont *)font forState:(UIControlState)state {
     
 }
-
+- (void)kb_setNormalTitle:(NSString *)title {
+    [self setTitle:title forState:UIControlStateNormal];
+}
 @end

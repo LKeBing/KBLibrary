@@ -78,4 +78,11 @@
     return self.layer.shadowOpacity;
 }
 
+- (void)setKbShadowRadius:(CGFloat)kbShadowRadius {
+    self.layer.masksToBounds = YES;
+    self.layer.shadowRadius = kbShadowRadius;
+}
+- (CGFloat)kbShadowRadius {
+    return self.layer.shadowRadius;
+}
 @end

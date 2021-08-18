@@ -39,4 +39,8 @@
     [self presentViewController:vc animated:animated completion:nil];
 }
 
+- (void)kb_removeChildrenViewControllers {
+    [self.childViewControllers makeObjectsPerformSelector:@selector(removeFromParentViewController)];
+}
+
 @end

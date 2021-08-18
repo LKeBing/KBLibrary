@@ -27,6 +27,7 @@ KBFloatProperty kbCornerRadius;
 KBColorProperty kbShadowColor;
 KBSizeProperty kbShadowOffset;
 KBFloatProperty kbShadowOpacity;
+KBFloatProperty kbShadowRadius;
 @end
 
 NS_ASSUME_NONNULL_END

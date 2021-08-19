@@ -22,13 +22,27 @@
 - (void)kb_setImageWithName:(NSString *)imageName forState:(UIControlState)state {
     [self setImage:kbImageWithName(imageName) forState:state];
 }
+- (void)kb_setNormalImageWithName:(NSString *)imageName {
+    [self kb_setImageWithName:imageName forState:UIControlStateNormal];
+}
+- (void)kb_setSelectedImageWithName:(NSString *)imageName {
+    [self kb_setImageWithName:imageName forState:UIControlStateSelected];
+}
 - (void)kb_setBackgroundImageWithName:(NSString *)imageName forState:(UIControlState)state {
     [self setBackgroundImage:kbImageWithName(imageName) forState:state];
 }
+
 - (void)kb_setTitleFont:(UIFont *)font forState:(UIControlState)state {
     
 }
 - (void)kb_setNormalTitle:(NSString *)title {
     [self setTitle:title forState:UIControlStateNormal];
 }
+- (void)kb_setNormalTitleColor:(UIColor *)color {
+    [self setTitleColor:color forState:UIControlStateNormal];
+}
+- (void)kb_setSelectedTitleColor:(UIColor *)color {
+    [self setTitleColor:color forState:UIControlStateSelected];
+}
+
 @end

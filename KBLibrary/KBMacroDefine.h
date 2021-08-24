@@ -49,4 +49,10 @@
 //APP构建版本号
 #define KB_APP_BUILD_VERSION    [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]
 
+
+#define kb_string_to_string(string)     [NSString stringWithFormat:@"%@",string]
+#define kb_number_to_string(number)     [NSString stringWithFormat:@"%@",number]
+#define kb_integer_to_string(integer)   kb_number_to_string(@(integer))
+#define kb_float_to_string(float)       kb_number_to_string(@(float))
+
 #endif /* KBMacroDefinition_h */

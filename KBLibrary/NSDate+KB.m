@@ -143,19 +143,12 @@
     
     NSInteger minute = secondInterval / 60;//分
     NSInteger second = secondInterval % 60;//秒
+    NSString *minuteStr = minute < 10 ? [NSString stringWithFormat:@"0%@",@(minute)] : [NSString stringWithFormat:@"%@",@(minute)];
+    NSString *secondStr = second < 10 ? [NSString stringWithFormat:@"0%@",@(second)] : [NSString stringWithFormat:@"%@",@(second)];
     if ([format isEqualToString:dateFormat12]) {
-        NSString *minuteStri = minute < 10 ? [NSString stringWithFormat:@"0%@",@(minute)] : [NSString stringWithFormat:@"%@",@(minute)];
-        NSString *secondStri = second < 10 ? [NSString stringWithFormat:@"0%@",@(second)] : [NSString stringWithFormat:@"%@",@(second)];
-        return [NSString stringWithFormat:@"%@:%@",minuteStri,secondStri];
+        return [NSString stringWithFormat:@"%@:%@",minuteStr,secondStr];
     } else if ([format isEqualToString:dateFormat13]) {
-        NSMutableString *timeStr = [NSMutableString new];
-        if (minute > 0) {
-            [timeStr appendFormat:@"%@′",@(minute)];
-        }
-        if (second > 0) {
-            [timeStr appendFormat:@"%@″",@(second)];
-        }
-        return timeStr.copy;
+        return [NSString stringWithFormat:@"%@′%@″",minuteStr,secondStr];
     } else {
         return [NSString stringWithFormat:@"%ld",secondInterval];
     }

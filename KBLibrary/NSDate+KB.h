@@ -39,8 +39,10 @@ static NSString * _Nullable const dateFormat11 = @"MM-dd";
 /**@"yyyy-MM-dd'T'HH:mm:ssZ"*/
 static NSString * _Nullable const ISODateFormat = @"yyyy-MM-dd'T'HH:mm:ssZ";
 
+/**mm:ss*/
 static NSString * _Nullable const dateFormat12 = @"mm:ss";
-static NSString * _Nullable const dateFormat13 = @"m′s″";
+/**mm′ss″*/
+static NSString * _Nullable const dateFormat13 = @"mm′ss″";
 
 @interface NSDateFormatter (KB)
 + (NSDateFormatter *)kb_dateFormatterWithformat:(NSString *)format;

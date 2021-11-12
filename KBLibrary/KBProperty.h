@@ -32,6 +32,7 @@
 #define KBStrongReadPropertyWithClass(class)    KBStrongReadProperty class *
 
 #define KBStringProperty                        KBStrongPropertyWithClass(NSString)
+#define KBAttributedStringProperty              KBStrongPropertyWithClass(NSAttributedString)
 #define KBDataProperty                          KBStrongPropertyWithClass(NSData)
 #define KBNumberProperty                        KBStrongPropertyWithClass(NSNumber)
 #define KBColorProperty                         KBStrongPropertyWithClass(UIColor)

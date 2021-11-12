@@ -13,22 +13,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface KBTextView : UITextView
 
-/**
- Set textView's placeholder text. Default is nil.
- */
-@property(nullable, nonatomic,copy) IBInspectable NSString    *placeholder;
+KBStringProperty placeholder;
+KBColorProperty placeholderColor;
 
-/**
- Set textView's placeholder attributed text. Default is nil.
- */
-@property(nullable, nonatomic,copy) IBInspectable NSAttributedString    *attributedPlaceholder;
+KBAttributedStringProperty attributedPlaceholder;
 
-/**
- To set textView's placeholder text color. Default is nil.
- */
-@property(nullable, nonatomic,copy) IBInspectable UIColor    *placeholderTextColor;
-
-KBIntProperty maxCharCount;//最大字符个数限制，默认为0，即不做限制
+- (void)clearAllMargin;//清除四周的间隙
 
 @end
 

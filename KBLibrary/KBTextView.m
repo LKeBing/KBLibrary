@@ -11,7 +11,6 @@
 @interface KBTextView ()
 
 KBLabelProperty placeholderLabel;
-KBLabelProperty charCountLabel;
 
 @end
 
@@ -19,19 +18,7 @@ KBLabelProperty charCountLabel;
 
 @synthesize placeholder = _placeholder;
 @synthesize placeholderLabel = _placeholderLabel;
-@synthesize placeholderTextColor = _placeholderTextColor;
-
--(void)initialize
-{
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPlaceholder) name:UITextViewTextDidChangeNotification object:self];
-}
-
--(void)dealloc
-{
-    [_placeholderLabel removeFromSuperview];
-    _placeholderLabel = nil;
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
+@synthesize placeholderColor = _placeholderColor;
 
 - (instancetype)init
 {
@@ -48,68 +35,73 @@ KBLabelProperty charCountLabel;
     [self initialize];
 }
 
--(void)refreshPlaceholder
+-(void)layoutSubviews
 {
-    if([[self text] length] || [[self attributedText] length])
-    {
-        [self.placeholderLabel setAlpha:0];
-    }
-    else
-    {
-        [self.placeholderLabel setAlpha:1];
-    }
+    [super layoutSubviews];
     
-    [self setNeedsLayout];
-    [self layoutIfNeeded];
+    _placeholderLabel.frame = [self placeholderExpectedFrame];
+}
+
+-(void)dealloc
+{
+    [_placeholderLabel removeFromSuperview];
+    _placeholderLabel = nil;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+
+// 监听textView内容变化
+-(void)initialize
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshPlaceholderHidden) name:UITextViewTextDidChangeNotification object:self];
+}
+
+//当textField里的文本改变时, 该delegate的getter方法会被调用. 此时就刷新一下textView的placeholder
+-(id<UITextViewDelegate>)delegate
+{
+    [self refreshPlaceholderHidden];
+    
+    return [super delegate];
 }
 
 - (void)setText:(NSString *)text
 {
     [super setText:text];
-    [self refreshPlaceholder];
+    
+    [self refreshPlaceholderHidden];
 }
 
 -(void)setAttributedText:(NSAttributedString *)attributedText
 {
     [super setAttributedText:attributedText];
-    [self refreshPlaceholder];
+    
+    [self refreshPlaceholderHidden];
 }
 
 -(void)setFont:(UIFont *)font
 {
     [super setFont:font];
-    self.placeholderLabel.font = self.font;
     
-    [self setNeedsLayout];
-    [self layoutIfNeeded];
+    _placeholderLabel.font = self.font;
+    [self refreshPlaceholderFrame];
 }
 
 -(void)setTextAlignment:(NSTextAlignment)textAlignment
 {
     [super setTextAlignment:textAlignment];
-    self.placeholderLabel.textAlignment = textAlignment;
     
-    [self setNeedsLayout];
-    [self layoutIfNeeded];
+    _placeholderLabel.textAlignment = textAlignment;
 }
 
--(void)layoutSubviews
-{
-    [super layoutSubviews];
-    self.placeholderLabel.frame = [self placeholderExpectedFrame];
-    
-    if (_charCountLabel) {
-        _charCountLabel.frame = [self charCountExpectedFrame];
-        
-    }
-}
+
+
 
 -(void)setPlaceholder:(NSString *)placeholder
 {
     _placeholder = placeholder;
     
     self.placeholderLabel.text = placeholder;
-    [self refreshPlaceholder];
+    [self refreshPlaceholderFrame];
 }
 
 -(void)setAttributedPlaceholder:(NSAttributedString *)attributedPlaceholder
@@ -117,29 +109,16 @@ KBLabelProperty charCountLabel;
     _attributedPlaceholder = attributedPlaceholder;
     
     self.placeholderLabel.attributedText = attributedPlaceholder;
-    [self refreshPlaceholder];
+    [self refreshPlaceholderFrame];
 }
 
--(void)setPlaceholderTextColor:(UIColor*)placeholderTextColor
+-(void)setplaceholderColor:(UIColor*)placeholderColor
 {
-    _placeholderTextColor = placeholderTextColor;
-    self.placeholderLabel.textColor = placeholderTextColor;
-}
-
--(UIEdgeInsets)placeholderInsets
-{
-    return UIEdgeInsetsMake(self.textContainerInset.top, self.textContainerInset.left + self.textContainer.lineFragmentPadding, self.textContainerInset.bottom, self.textContainerInset.right + self.textContainer.lineFragmentPadding);
-}
-
--(CGRect)placeholderExpectedFrame
-{
-    UIEdgeInsets placeholderInsets = [self placeholderInsets];
-    CGFloat maxWidth = CGRectGetWidth(self.frame)-placeholderInsets.left-placeholderInsets.right;
+    _placeholderColor = placeholderColor;
     
-    CGSize expectedSize = [self.placeholderLabel sizeThatFits:CGSizeMake(maxWidth, CGRectGetHeight(self.frame)-placeholderInsets.top-placeholderInsets.bottom)];
-    
-    return CGRectMake(placeholderInsets.left, placeholderInsets.top, maxWidth, expectedSize.height);
+    _placeholderLabel.textColor = placeholderColor;
 }
+
 
 
 
@@ -164,90 +143,52 @@ KBLabelProperty charCountLabel;
             _placeholderLabel.textColor = [UIColor lightTextColor];
 #endif
         }
-        _placeholderLabel.alpha = 0;
+        if (_placeholderColor) {
+            _placeholderLabel.textColor = _placeholderColor;
+        }
         [self addSubview:_placeholderLabel];
     }
     
     return _placeholderLabel;
 }
 
-
-//When any text changes on textField, the delegate getter is called. At this time we refresh the textView's placeholder
--(id<UITextViewDelegate>)delegate
+-(void)refreshPlaceholderHidden
 {
-    [self refreshPlaceholder];
-    return [super delegate];
+    _placeholderLabel.hidden = [[self text] length]>0 || [[self attributedText] length]>0;
 }
 
--(CGSize)intrinsicContentSize
+-(void)refreshPlaceholderFrame
 {
-    if (self.hasText) {
-        return [super intrinsicContentSize];
-    }
-    
-    UIEdgeInsets placeholderInsets = [self placeholderInsets];
-    CGSize newSize = [super intrinsicContentSize];
-    
-    newSize.height = [self placeholderExpectedFrame].size.height + placeholderInsets.top + placeholderInsets.bottom;
-    
-    return newSize;
+    [self setNeedsLayout];
+    [self layoutIfNeeded];
 }
 
-
-
-
--(UILabel*)charCountLabel
-{
-    if (_charCountLabel == nil)
-    {
-        _charCountLabel = [[UILabel alloc] init];
-        _charCountLabel.autoresizingMask = (UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleTopMargin);
-        _charCountLabel.font = self.font;
-        _charCountLabel.textAlignment = NSTextAlignmentRight;
-        _charCountLabel.backgroundColor = [UIColor redColor];
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 130000
-        if (@available(iOS 13.0, *)) {
-            _charCountLabel.textColor = [UIColor systemGrayColor];
-        } else
-#endif
-        {
-#if __IPHONE_OS_VERSION_MIN_REQUIRED < 130000
-            _charCountLabel.textColor = [UIColor lightTextColor];
-#endif
-        }
-        [self addSubview:_charCountLabel];
-    }
-    
-    return _charCountLabel;
-}
-- (void)setMaxCharCount:(int)maxCharCount {
-    _maxCharCount = maxCharCount;
-    
-    if (_maxCharCount>0) {
-        UIEdgeInsets insets = self.textContainerInset;
-        insets.bottom += 20;
-        self.textContainerInset = insets;
-        
-        self.charCountLabel.text = [NSString stringWithFormat:@"0/%d",_maxCharCount];
-    } else {
-        [_charCountLabel removeFromSuperview];
-        _charCountLabel = nil;
-    }
-}
--(UIEdgeInsets)charCountInsets
+-(UIEdgeInsets)placeholderInsets
 {
     return UIEdgeInsetsMake(self.textContainerInset.top, self.textContainerInset.left + self.textContainer.lineFragmentPadding, self.textContainerInset.bottom, self.textContainerInset.right + self.textContainer.lineFragmentPadding);
 }
 
--(CGRect)charCountExpectedFrame
+-(CGRect)placeholderExpectedFrame
 {
-    UIEdgeInsets charCountInsets = [self charCountInsets];
-    CGFloat maxWidth = CGRectGetWidth(self.frame)-charCountInsets.left-charCountInsets.right;
+    UIEdgeInsets placeholderInsets = [self placeholderInsets];
+    CGFloat maxWidth = CGRectGetWidth(self.frame)-placeholderInsets.left-placeholderInsets.right;
     
-    CGSize expectedSize = [self.charCountLabel sizeThatFits:CGSizeMake(maxWidth, CGRectGetHeight(self.frame)-charCountInsets.top-charCountInsets.bottom)];
+    CGSize expectedSize = [_placeholderLabel sizeThatFits:CGSizeMake(maxWidth, CGRectGetHeight(self.frame)-placeholderInsets.top-placeholderInsets.bottom)];
     
-    return CGRectMake(charCountInsets.left, CGRectGetHeight(self.frame)-expectedSize.height, maxWidth, 20);
+    return CGRectMake(placeholderInsets.left, placeholderInsets.top, maxWidth, expectedSize.height);
 }
 
+
+
+- (void)clearAllMargin {
+    self.textContainer.lineFragmentPadding = 0.0;
+    self.textContainerInset = UIEdgeInsetsZero;
+    
+    [self refreshPlaceholderFrame];
+}
+
+@end
+
+@implementation KBTextView (CharCountLimit)
 
 @end

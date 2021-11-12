@@ -15,7 +15,6 @@
 #define KBLog(FORMAT, ...) fprintf(stderr,"%s:%d \t%s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
 #else
 #define KBLog(FORMAT, ...) nil
-#define NSLog(FORMAT, ...) nil
 #endif
 
 // 设备屏幕尺寸 （逻辑分辨率）
@@ -36,6 +35,10 @@
 #define kb_keep_screen_light        kbSharedApplication.idleTimerDisabled = YES;//保持屏幕常亮
 #define kb_cancel_keep_screen_light kbSharedApplication.idleTimerDisabled = NO;//取消屏幕常亮
 
+#define kb_new_arr      @[]
+#define kb_new_muArr    @[].mutableCopy
+#define kb_new_dic      @{}
+#define kb_new_muDic    @{}.mutableCopy
 
 //是否是横屏
 #define kbScreenIsLandscape     kbSharedApplication.statusBarOrientation >= 3

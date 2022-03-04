@@ -10,6 +10,7 @@
 #ifndef KBBlock_h
 #define KBBlock_h
 
+
 /**void(^)(void)*/
 typedef void(^KBEmptyBlock)(void);
 /**void(^)(BOOL)*/
@@ -67,5 +68,7 @@ typedef void(^KBDictionaryResultBlock)(NSDictionary * _Nullable dic, NSString * 
 /**void(^)(id,NSString)*/
 typedef void(^KBAnyResultBlock)(id _Nullable obj, NSString * _Nullable msg);
 
+#import <Photos/Photos.h>
+typedef void(^KBAlbumImageBlock)(NSString * _Nullable identifier, UIImage * _Nullable image, PHAsset * _Nullable asset);
 
 #endif /* KBBlock_h */

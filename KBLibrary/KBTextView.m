@@ -188,7 +188,3 @@ KBLabelProperty placeholderLabel;
 }
 
 @end
-
-@implementation KBTextView (CharCountLimit)
-
-@end

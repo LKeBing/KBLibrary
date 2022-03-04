@@ -9,8 +9,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-#define kbColorWithRGB(red, green, blue, alpha)\
+#define kbRGBAColor(red, green, blue, alpha)\
         [UIColor colorWithRed:red/255.0 green:green/255.0 blue:blue/255.0 alpha:alpha]
+
+#define kbRGBColor(red, green, blue)\
+        kbRGBAColor(red, green, blue, 1.f)
 
 #define kbColorWithRGBAHex(rgbHex, alpha)\
         kbColorWithRGB((float)((rgbHex & 0xFF0000) >> 16), ((float)((rgbHex & 0x00FF00) >> 8)), ((float)(rgbHex & 0x0000FF)), alpha)

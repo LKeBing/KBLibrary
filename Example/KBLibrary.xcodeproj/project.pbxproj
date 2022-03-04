@@ -40,6 +40,7 @@
 		D8A8EE9A26957D7D007614CF /* NSMutableArray+KB.m in Sources */ = {isa = PBXBuildFile; fileRef = D8A8EE9926957D7D007614CF /* NSMutableArray+KB.m */; };
 		D8A8EEA926957FF3007614CF /* UIImage+KB.m in Sources */ = {isa = PBXBuildFile; fileRef = D8A8EEA826957FF3007614CF /* UIImage+KB.m */; };
 		D8A8EEAC26958037007614CF /* UIImageView+KB.m in Sources */ = {isa = PBXBuildFile; fileRef = D8A8EEAB26958037007614CF /* UIImageView+KB.m */; };
+		D8ED94312743BC2300259E42 /* KBNode.m in Sources */ = {isa = PBXBuildFile; fileRef = D8ED94302743BC2300259E42 /* KBNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -110,6 +111,8 @@
 		D8A8EEA826957FF3007614CF /* UIImage+KB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+KB.m"; sourceTree = "<group>"; };
 		D8A8EEAA26958037007614CF /* UIImageView+KB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+KB.h"; sourceTree = "<group>"; };
 		D8A8EEAB26958037007614CF /* UIImageView+KB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+KB.m"; sourceTree = "<group>"; };
+		D8ED942F2743BC2300259E42 /* KBNode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KBNode.h; sourceTree = "<group>"; };
+		D8ED94302743BC2300259E42 /* KBNode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KBNode.m; sourceTree = "<group>"; };
 		F7CB2152FBBE583E2A8ABE49 /* Pods-KBLibrary_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KBLibrary_Example.release.xcconfig"; path = "Target Support Files/Pods-KBLibrary_Example/Pods-KBLibrary_Example.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -263,6 +266,8 @@
 				D82F5C7026942B3A0048C6F4 /* UIViewController+KB.m */,
 				D84B896626A8139600236A51 /* KBTextView.h */,
 				D84B896726A8139600236A51 /* KBTextView.m */,
+				D8ED942F2743BC2300259E42 /* KBNode.h */,
+				D8ED94302743BC2300259E42 /* KBNode.m */,
 			);
 			name = KBLibrary;
 			path = ../../KBLibrary;
@@ -299,6 +304,11 @@
 				CLASSPREFIX = KB;
 				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = LKeBing;
+				TargetAttributes = {
+					6003F589195388D20070C39A = {
+						DevelopmentTeam = GTX3MUR5U3;
+					};
+				};
 			};
 			buildConfigurationList = 6003F585195388D10070C39A /* Build configuration list for PBXProject "KBLibrary" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -406,6 +416,7 @@
 				6003F59A195388D20070C39A /* main.m in Sources */,
 				D82F5C8926942B3A0048C6F4 /* NSData+KB.m in Sources */,
 				D82F5C8D26942B3B0048C6F4 /* KBTool.m in Sources */,
+				D8ED94312743BC2300259E42 /* KBNode.m in Sources */,
 				D8728C1026980E2000F8812F /* NSArray+KB.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -540,6 +551,7 @@
 			baseConfigurationReference = 2B22469D299364CC50F6B0F1 /* Pods-KBLibrary_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = GTX3MUR5U3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KBLibrary/KBLibrary-Prefix.pch";
 				INFOPLIST_FILE = "KBLibrary/KBLibrary-Info.plist";
@@ -556,6 +568,7 @@
 			baseConfigurationReference = F7CB2152FBBE583E2A8ABE49 /* Pods-KBLibrary_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = GTX3MUR5U3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "KBLibrary/KBLibrary-Prefix.pch";
 				INFOPLIST_FILE = "KBLibrary/KBLibrary-Info.plist";

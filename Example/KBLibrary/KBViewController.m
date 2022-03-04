@@ -50,7 +50,6 @@
     textView.backgroundColor = kbRandomColor;
     textView.textContainerInset = UIEdgeInsetsMake(10, 10, 10, 10);
     textView.textContainer.lineFragmentPadding = 0;
-    textView.maxCharCount = 300;
     [self.view addSubview:textView];
 }
 
